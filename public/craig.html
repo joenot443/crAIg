@@ -6,11 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,300' rel='stylesheet' type='text/css'-->
     <link href="css/craigStyle.css" rel="stylesheet">
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="d3.v3.min.js" charset="utf-8"></script>
         <script src="d3-grid.js"></script>
     <script src="grid.js"></script>
     <script src="network.js"></script>
     <script src="socket.io.js"></script>
+    <script src="jquery-1.11.3.min.js"></script>
+    <style>
+        .node {
+            fill: #fff;
+        }
+
+        .link {
+            stroke: #000;
+            stroke-width: 2px;
+        }
+    </style>
 
 
     <title>crAIg</title>
@@ -20,12 +31,47 @@
   </body>
 
       <script>   
-        // drawGrid();
+        drawGrid();
         // var socket = io.connect('http://localhost');
         // socket.on('grid', function(data) {
         //   updateGrid(data);
         // });
-        drawNetwork();
+        // drawNetwork();
+        var networkJSON = {
+            synapses: [
+                {
+                    historicalMarking: 23,
+                    to: 170,
+                    from: 25,
+                    weight: 50
+                },
+                {
+                    historicalMarking: 30,
+                    to: 171,
+                    from: 120,
+                    weight: 10
+                },
+                {
+                    historicalMarking: 45,
+                    to: 180,
+                    from: 124,
+                    weight: 10
+                },
+                {
+                    historicalMarking: 46,
+                    to:172,
+                    from: 180,
+                    weight: 5
+                },
+                {
+                    historicalMarking: 50,
+                    to: 180,
+                    from: 55
+                }
+            ]
+        }
+
+        drawNetwork(networkJSON)
 
  </script>
 

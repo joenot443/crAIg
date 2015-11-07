@@ -19,7 +19,7 @@ io.on('connection', function (socket) {
 	console.log("Someone connected!");
 
 	//Set up a timer to send the JSON file
-	setInterval(sendGrid, 2000);
+	setInterval(sendGrid, 500);
 
 	function sendGrid() {
 		console.log("Sending grid");
