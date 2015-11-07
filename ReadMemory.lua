@@ -45,6 +45,7 @@ local function readTiles()
 	for dy = -radius*16, radius*16, 16 do
 		--Create a new row for each iteration
 		tiles[dy/16] = {}
+		
 		for dx = -radius*16, radius*16, 16 do
 			--Create a new tile for each iteration
 			tiles[dy/16][#tiles[dy/16]+1] = 0;
