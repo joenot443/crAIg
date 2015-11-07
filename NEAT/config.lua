@@ -15,3 +15,16 @@ SYNAPSE_INHERIT_DISABLED_CHANCE = 0.75
 
 --Chance of a baby just being a mutation of a parent instead of a crossover mating
 ASEXUAL_REPRODUCTION_CHANCE = 0.25
+
+--If you're in the bottom {EXTINCTION_CANDITATE}%, then mark for extinction in {EXTINCTION GENERATIONS} generations
+EXTINCTION_GENERATIONS = 5
+EXTINCTION_CANDITATE = 0.3
+
+--Used in equation 1 from the paper
+COMPATIBILITY_C1 = 
+COMPATIBILITY_C2 =
+COMPATIBILITY_C3 =
+SMALL_GENOME_THRESHOLD = 20
+
+--Used to decide if species should be in the same or different species
+COMPATIBILITY_THRESHOLD = 
