@@ -19,4 +19,6 @@ function Synapse:new()
 
 	-- Whether the synapse is being expressed or not
 	synapse.enabled = true
+
+	return synapse
 end
