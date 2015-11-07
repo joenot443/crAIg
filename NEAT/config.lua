@@ -12,3 +12,6 @@ SYNAPSE_PERTURBATION_BIAS = 0.1
 
 --What is the chance that if one parent has a synapse disabled that the child will have it disabled as well
 SYNAPSE_INHERIT_DISABLED_CHANCE = 0.75
+
+--Chance of a baby just being a mutation of a parent instead of a crossover mating
+ASEXUAL_REPRODUCTION_CHANCE = 0.25

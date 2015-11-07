@@ -11,5 +11,22 @@ function Genome:new()
 	--We keep track of this so that we can easily add synapses
 	genome.maxNeuron = 0
 
+	--Calculated using fitness function
+	genome.fitness = 0
+
 	return genome
+end
+
+function Genome:copy(oldGenome)
+	local newGenome = Genome:new()
+
+	--Copy the synapses over
+	for s=1,#oldGenome.synapses
+		table.insert(newGenome.synapses, copySynapse(oldGenome.synapses[s]))
+	end
+
+	--Copy the max neuron over
+	newGenome.maxNeuron = oldGenome.maxNeuron
+
+	return newGenome
 end

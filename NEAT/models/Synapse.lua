@@ -1,6 +1,6 @@
 Synapse = {}
 
-currentSynapse = 0
+currentSynapse = 1
 
 function Synapse:new()
 	currentSynapse++
@@ -8,7 +8,7 @@ function Synapse:new()
 	local synapse = {}
 
 	-- ID of the synapse
-	synapse.label = currentSynapse
+	synapse.historicalMarking = currentSynapse
 
 	-- Set to IDs of Neurons
 	synapse.from = 0
@@ -21,4 +21,16 @@ function Synapse:new()
 	synapse.enabled = true
 
 	return synapse
+end
+
+function Synapse:copy(oldSynapse)
+	local newSynapse = Synapse:new()
+
+	newSynapse.historicalMarking = newSynapse.historicalMarking
+	newSynapse.from = oldSynapse.from
+	newSynapse.to = oldSynapse.to
+	newSynapse.weight = oldSynapse.weight
+	newSynapse.enabled = oldSynapse.enabled
+
+	return newSynapse
 end
