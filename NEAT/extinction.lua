@@ -9,7 +9,8 @@ function extinction(allSpecies)
 	end)
 
 	--For each of the species that aren't making the bar
-	for s=keepSpeciesCount,#allSpecies do
+	print("\tKeeping ",keepSpeciesCount," species (out of ",#allSpecies,")")
+	for s=keepSpeciesCount+1,#allSpecies do
 		local species = allSpecies[s]
 
 		species.extinctionCounter = species.extinctionCounter + 1

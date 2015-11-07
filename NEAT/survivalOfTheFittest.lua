@@ -1,11 +1,12 @@
 --Take a species and clear out the weak, return how many died
-function survivalOfTheFittest(species)
+function survivalOfTheFittest(species, totalAdjustedFitness)
 	--Sort them by fitness (maybe we should have calculated fitness beforehand?)
 	table.sort(species.genomes, function(a,b)
 		return (a.fitness > b.fitness)
 	end)
 
-	local theWeakCount = 0 -- Use function 2 from the paper
+	local theWeakCount = math.floor(species.sumAdjustedFitness / totalAdjustedFitness) * #species.genomes
+	print("\tThis species generates ",species.sumAdjustedFitness,"/",totalAdjustedFitness, " fitness")
 
 	local thoseWhoSurvived = #species.genomes - theWeakCount
 
@@ -13,6 +14,10 @@ function survivalOfTheFittest(species)
 
 	--Remember how many genomes are supposed to be 
 	species.populationSize = #species.genomes
+
+	--Allow the species some children based on how successful it is
+	species.populationSize = species.populationSize + math.floor(species.sumAdjustedFitness / totalAdjustedFitness*40)
+
 
 	--Remove the necessary species
 	while #species.genomes > thoseWhoSurvived do

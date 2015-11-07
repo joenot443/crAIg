@@ -12,6 +12,9 @@ function Species:new()
 	-- Determined by a function?
 	species.averageFitness = 0
 
+	-- Set by calculateAdjustedFitness()
+	species.sumAdjustedFitness = 0
+
 	-- How long has this species been underperforming (generations)
 	species.extinctionCounter = 0
 
