@@ -9,8 +9,17 @@ require("testcrAIg")
 local crAIg = getCraig()
 
 newGeneration(crAIg)
+newGeneration(crAIg)
+newGeneration(crAIg)
+newGeneration(crAIg)
+newGeneration(crAIg)
+newGeneration(crAIg)
+newGeneration(crAIg)
 
 print(#crAIg.species," species")
-print(#crAIg.species[1].genomes, " genomes in species 1")
+for i=1,#crAIg.species do
+	print(#crAIg.species[i].genomes, " genomes in species ",i)
+end
 
---print(pretty(crAIg))
+--print(pretty(crAIg.species[1].candidateGenome))
+--print(pretty(crAIg.species[2].genomes[1]))

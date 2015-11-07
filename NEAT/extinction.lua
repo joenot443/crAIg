@@ -5,7 +5,7 @@ function extinction(allSpecies)
 	local keepSpeciesCount = #allSpecies - math.floor(#allSpecies*EXTINCTION_CANDIDATE)
 
 	table.sort(allSpecies, function(a,b)
-		return a.fitness > b.fitness
+		return a.averageFitness > b.averageFitness
 	end)
 
 	--For each of the species that aren't making the bar

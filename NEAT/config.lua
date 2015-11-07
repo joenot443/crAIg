@@ -27,7 +27,7 @@ COMPATIBILITY_C3 = 0.4
 SMALL_GENOME_THRESHOLD = 20
 
 --Used to decide if species should be in the same or different species
-COMPATIBILITY_THRESHOLD = 0
+COMPATIBILITY_THRESHOLD = 1.0
 
 --I/O
 OUTPUTS = {

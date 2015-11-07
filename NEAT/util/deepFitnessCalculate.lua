@@ -2,12 +2,19 @@
 --Pick a candidate genome for each species
 function deepFitnessCalculate(species)
 	print("Calculating fitness for ",#species.genomes," genomes")
+	local totalFitness = 0
+
 	for i=1,#species.genomes do
 		local genome = species.genomes[i]
 		genome.fitness = calculateFitness(genome)
+
+		totalFitness = totalFitness + genome.fitness
 	end
 
 	setCandidate(species)
+
+	--For now, just take average fitness of genomes
+	species.averageFitness = totalFitness/#species.genomes
 end
 
 function calculateFitness(genome)

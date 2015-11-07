@@ -7,6 +7,7 @@ require("NEAT/models/Genome")
 local species = Species:new()
 
 local genome1 = Genome:new()
+genome1.maxNeuron = 8
 	-- A>D
 	local synapse1 = Synapse:new()
 	synapse1.historicalMarking = 1
@@ -51,6 +52,7 @@ local genome1 = Genome:new()
 	table.insert(genome1.synapses, synapse8)
 
 local genome2 = Genome:new()
+genome2.maxNeuron = 10
 	-- A>D
 	table.insert(genome2.synapses, Synapse:copy(synapse1))
 
@@ -95,11 +97,26 @@ local genome2 = Genome:new()
 	synapse10.to = 6
 	table.insert(genome2.synapses,synapse10)
 
-genome1.maxNeuron = 8
-genome2.maxNeuron = 10
+
+local genome3 = Genome:new()
+genome3.maxNeuron = 4
+	-- A>D
+	table.insert(genome3.synapses, Synapse:copy(synapse1))
+
+	-- B>D
+	table.insert(genome3.synapses, Synapse:copy(synapse2))
+
+	-- C>D
+	table.insert(genome3.synapses, Synapse:copy(synapse3))
+
+	-- B>E
+	table.insert(genome3.synapses, Synapse:copy(synapse4))
 
 table.insert(species.genomes,genome1)
 table.insert(species.genomes,genome2)
+table.insert(species.genomes,genome3)
+
+
 
 function getCraig()
 	local craig = {}

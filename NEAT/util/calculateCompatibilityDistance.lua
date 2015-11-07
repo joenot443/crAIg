@@ -18,13 +18,13 @@ function calculateCompatibilityDistance(genome1,genome2)
 
 	local W = calculateW(genome1,genome2)
 
-	print("E: ",E)
-	print("D: ",D)
-	print("C1: ",C1)
-	print("C2: ",C2)
-	print("C3: ",C3)
-	print("N: ",N)
-	print("W: ",W)
+	--print("E: ",E)
+	--print("D: ",D)
+	--print("C1: ",C1)
+	--print("C2: ",C2)
+	--print("C3: ",C3)
+	--print("N: ",N)
+	--print("W: ",W)
 
 	local compatibilityDistance = (C1*E/N) + (C2*D/N) + C3*W
 
@@ -94,9 +94,6 @@ function numExcess(genome1,genome2)
 		end
 	end
 
-	print("g1: ",#genome1.synapses)
-	print("g2: ",#genome2.synapses)
-
 	--The genome with the more recent changes
 	local recentGenome = {}
 	--The most recent change to the less recent genome
@@ -108,8 +105,6 @@ function numExcess(genome1,genome2)
 		recentGenome = genome2
 		maxHistoricalMarkingOlderGenome = maxHistoricalMarkingGenome1
 	end
-
-	print("Recent genome synapse count: ",#recentGenome.synapses)
 
 	local excessCount = 0
 	--Run through each of the synapses

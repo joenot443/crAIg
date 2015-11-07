@@ -18,4 +18,6 @@ function survivalOfTheFittest(species)
 	while #species.genomes > thoseWhoSurvived do
 		table.remove(species.genomes)
 	end
+
+	print("",#species.genomes," genomes left in species")
 end

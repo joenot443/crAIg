@@ -10,8 +10,6 @@ local MUTATE_MODIFY_SYNAPSE = 3
 
 --Create mutations on the genome 
 function mutateGenome(genome)
-	print("mutateGenome: genome")
-	print(pretty(genome))
 	--Modify the mutation rates?
 
 	--Determine if we should re-weigh synapses

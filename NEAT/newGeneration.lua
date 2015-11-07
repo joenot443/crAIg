@@ -6,6 +6,7 @@ require("NEAT/survivalOfTheFittest")
 
 --Evolve crAIg into the next generation
 function newGeneration(crAIg)
+	print("-------------GENERATION----------------")
 	-- 1. Calculate Fitness of all genomes and species
 	-- 		Pick a species "candidate genome"
 	print("Calculating deep fitness for ",#crAIg.species, " species")

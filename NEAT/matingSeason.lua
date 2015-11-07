@@ -9,16 +9,20 @@ function matingSeason(species)
 	local child = Genome:new()
 	local babyCount = species.populationSize - #species.genomes
 
+	print("\tMaking ",babyCount," babies")
+
 	for i=1,babyCount do
 
 		--Asexually reproduce by chance or if there is only one parent
 		if math.random() < ASEXUAL_REPRODUCTION_CHANCE or #species.genomes == 1 then
 			--Copy a parent genome exactly
+			print("\tAsexual reproduction")
 			local parent = species.genomes[math.random(1,#species.genomes)]
 
 			child = Genome:copy(parent)
 		else
 			--Mate
+			print("\tSexual reproduction")
 			local momIndex = math.random(1,#species.genomes)
 			local mom = species.genomes[momIndex]
 			local dad = findPartner(momIndex,species.genomes)
@@ -51,8 +55,8 @@ function mate(momGenome, dadGenome)
 		local synapse = dadGenome.synapses[i]
 		dadSynapses[synapse.historicalMarking] = synapse
 	end
-	print("Mom synapses: ",#momGenome.synapses)
-	print("Dad synapses: ",#dadGenome.synapses)
+	print("\tMom synapses: ",#momGenome.synapses)
+	print("\tDad synapses: ",#dadGenome.synapses)
 	--Now we have two arrays that we can match up
 
 	--The dirty

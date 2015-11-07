@@ -26,8 +26,7 @@ function reSpeciate(crAIg)
 		for j=1,#crAIg.species do
 			local candidateGenome = crAIg.species[j].candidateGenome
 			local compatibilityDistance = calculateCompatibilityDistance(unorganizedGenome,candidateGenome)
-
-			print("Compatibility Distance: ",compatibilityDistance)
+			print("\tCompatibility Distance: ",compatibilityDistance)
 			if(compatibilityDistance <= COMPATIBILITY_THRESHOLD) then
 				table.insert(crAIg.species[j].genomes,unorganizedGenome)
 				gotPlaced = true
