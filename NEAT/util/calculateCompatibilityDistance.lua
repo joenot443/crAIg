@@ -1,8 +1,10 @@
+require("NEAT/util/getLargerGenome")
+
 --Calculate the compatibility distance between two genomes
-function calculateCompabilityDistance(genome1,genome2)
+function calculateCompatibilityDistance(genome1,genome2)
 	--Equation 1 from the paper
 	local E = numExcess(genome1,genome2)
-	local D = numDisjoint(genome1,genome2,excessCount)
+	local D = numDisjoint(genome1,genome2,E)
 
 	local C1 = COMPATIBILITY_C1
 	local C2 = COMPATIBILITY_C2
@@ -15,6 +17,14 @@ function calculateCompabilityDistance(genome1,genome2)
 	end
 
 	local W = calculateW(genome1,genome2)
+
+	print("E: ",E)
+	print("D: ",D)
+	print("C1: ",C1)
+	print("C2: ",C2)
+	print("C3: ",C3)
+	print("N: ",N)
+	print("W: ",W)
 
 	local compatibilityDistance = (C1*E/N) + (C2*D/N) + C3*W
 
@@ -39,30 +49,53 @@ function numDisjoint(genome1,genome2,excessCount)
 			end
 		end
 
-		if !foundMatch then
-			disjointCount++
+		if not foundMatch then
+			disjointCount = disjointCount + 1
+		end
+	end
+
+	--Now do it the other way around as well
+	for i=1,#genome2.synapses do
+		-- Check if it has a matching synapse
+		local foundMatch = false
+
+		for j=1,#genome1.synapses do
+			--If the two markings are the same, it's a match
+			if genome2.synapses[i].historicalMarking == genome1.synapses[j].historicalMarking then
+				foundMatch = true
+				break;
+			end
+		end
+
+		if not foundMatch then
+			disjointCount = disjointCount + 1
 		end
 	end
 
 	--Excess don't match but are categorized differently
 	local disjointCount = disjointCount - excessCount
+
+	return disjointCount
 end
 
 function numExcess(genome1,genome2)
 	local maxHistoricalMarkingGenome1 = 0
 
-	for i=1,#genome1.synapses
+	for i=1,#genome1.synapses do
 		if genome1.synapses[i].historicalMarking > maxHistoricalMarkingGenome1 then
 			maxHistoricalMarkingGenome1 = genome1.synapses[i].historicalMarking
 		end
 	end
 
 	local maxHistoricalMarkingGenome2 = 0
-	for i=1, #genome2.synapses
+	for i=1, #genome2.synapses do
 		if genome2.synapses[i].historicalMarking > maxHistoricalMarkingGenome2 then
 			maxHistoricalMarkingGenome2 = genome2.synapses[i].historicalMarking
 		end
 	end
+
+	print("g1: ",#genome1.synapses)
+	print("g2: ",#genome2.synapses)
 
 	--The genome with the more recent changes
 	local recentGenome = {}
@@ -76,6 +109,8 @@ function numExcess(genome1,genome2)
 		maxHistoricalMarkingOlderGenome = maxHistoricalMarkingGenome1
 	end
 
+	print("Recent genome synapse count: ",#recentGenome.synapses)
+
 	local excessCount = 0
 	--Run through each of the synapses
 	for i=1,#recentGenome.synapses do
@@ -83,7 +118,7 @@ function numExcess(genome1,genome2)
 
 		--If the synapse we're looking at is newer than the newest in the older genome, then it's excess
 		if(synapse.historicalMarking > maxHistoricalMarkingOlderGenome) then
-			excessCount++
+			excessCount = excessCount + 1
 		end
 	end
 
@@ -112,7 +147,7 @@ function calculateW(genome1,genome2)
 	--Find the average of the weight differences
 	local weightDifferenceSum = 0
 	for i=1,#weightDifferences do
-		weightDifferenceSum += weightDifferences[i]
+		weightDifferenceSum = weightDifferenceSum + weightDifferences[i]
 	end
 
 	local W = weightDifferenceSum/#weightDifferences

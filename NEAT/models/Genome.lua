@@ -1,6 +1,5 @@
-package.path = package.path .. ";../?.lua"
-require("config")
-require("models/Synapse")
+require("NEAT/config")
+require("NEAT/models/Synapse")
 
 Genome = {}
 

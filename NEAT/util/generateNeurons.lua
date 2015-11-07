@@ -1,7 +1,6 @@
-package.path = package.path .. ";../?.lua"
-require("config")
-require("models/Neuron")
-require("models/Synapse")
+require("NEAT/config")
+require("NEAT/models/Neuron")
+require("NEAT/models/Synapse")
 
 -- Generate neurons given synapses
 function generateNeurons(synapses)

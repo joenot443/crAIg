@@ -1,6 +1,8 @@
+require("NEAT/config")
+
 --A species goes extinct if it's been the worst species for a while
 function extinction(allSpecies)
-	local keepSpeciesCount = math.floor(#allSpecies*EXTINCTION_CANDIDATE)
+	local keepSpeciesCount = #allSpecies - math.floor(#allSpecies*EXTINCTION_CANDIDATE)
 
 	table.sort(allSpecies, function(a,b)
 		return a.fitness > b.fitness
@@ -10,7 +12,7 @@ function extinction(allSpecies)
 	for s=keepSpeciesCount,#allSpecies do
 		local species = allSpecies[s]
 
-		species.extinctionCounter += 1
+		species.extinctionCounter = species.extinctionCounter + 1
 
 		if species.extinctionCounter >= EXTINCTION_GENERATIONS then
 			--Gotta kill it

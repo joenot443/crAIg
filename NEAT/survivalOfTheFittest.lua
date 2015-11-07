@@ -5,7 +5,7 @@ function survivalOfTheFittest(species)
 		return (a.fitness > b.fitness)
 	end)
 
-	local theWeakCount -- Use function 2 from the paper
+	local theWeakCount = 0 -- Use function 2 from the paper
 
 	local thoseWhoSurvived = #species.genomes - theWeakCount
 

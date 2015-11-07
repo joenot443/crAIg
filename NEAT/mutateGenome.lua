@@ -1,8 +1,8 @@
 --Pretty print
 local pretty = require "pl.pretty".dump
 
-require("util/getRandomNeuron")
-require("util/generateNeurons")
+require("NEAT/util/getRandomNeuron")
+require("NEAT/util/generateNeurons")
 
 local MUTATE_ADD_SYNAPSE = 1
 local MUTATE_ADD_NEURON = 2

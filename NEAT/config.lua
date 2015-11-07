@@ -18,12 +18,12 @@ ASEXUAL_REPRODUCTION_CHANCE = 0.25
 
 --If you're in the bottom {EXTINCTION_CANDITATE}%, then mark for extinction in {EXTINCTION GENERATIONS} generations
 EXTINCTION_GENERATIONS = 5
-EXTINCTION_CANDITATE = 0.3
+EXTINCTION_CANDIDATE = 0.3
 
 --Used in equation 1 from the paper
-COMPATIBILITY_C1 = 0
-COMPATIBILITY_C2 = 0
-COMPATIBILITY_C3 = 0
+COMPATIBILITY_C1 = 1
+COMPATIBILITY_C2 = 1
+COMPATIBILITY_C3 = 0.4
 SMALL_GENOME_THRESHOLD = 20
 
 --Used to decide if species should be in the same or different species

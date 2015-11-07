@@ -1,7 +1,7 @@
 --Pretty print
 local pretty = require "pl.pretty".dump
 
-require("mutateGenome")
+require("NEAT/mutateGenome")
 
 --Fill the population as necessary with children
 --Number of children based off species.populationSize
