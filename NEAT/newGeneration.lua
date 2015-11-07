@@ -2,6 +2,7 @@
 function newGeneration()
 	-- 1. Calculate Fitness of all genomes and species
 	-- 		Pick a species "candidate genome"
+	deepFitnessCalculate(crAIg)
 
 	-- 2. Survival of the Fittest
 	for s=1,#crAIg.species do

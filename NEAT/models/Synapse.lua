@@ -1,9 +1,9 @@
 Synapse = {}
 
-currentSynapse = 1
+currentSynapse = 0
 
 function Synapse:new()
-	currentSynapse++
+	currentSynapse = currentSynapse + 1
 
 	local synapse = {}
 
@@ -26,7 +26,7 @@ end
 function Synapse:copy(oldSynapse)
 	local newSynapse = Synapse:new()
 
-	newSynapse.historicalMarking = newSynapse.historicalMarking
+	newSynapse.historicalMarking = oldSynapse.historicalMarking
 	newSynapse.from = oldSynapse.from
 	newSynapse.to = oldSynapse.to
 	newSynapse.weight = oldSynapse.weight

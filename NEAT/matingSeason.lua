@@ -1,13 +1,18 @@
+--Pretty print
+local pretty = require "pl.pretty".dump
+
+require("mutateGenome")
+
 --Fill the population as necessary with children
 --Number of children based off species.populationSize
 function matingSeason(species)
 	local child = Genome:new()
 	local babyCount = species.populationSize - #species.genomes
 
-	for i=1,babyCount
+	for i=1,babyCount do
 
 		--Asexually reproduce by chance or if there is only one parent
-		if math.random() < ASEXUAL_REPRODUCTION_CHANCE or #species.genomes = 1 then
+		if math.random() < ASEXUAL_REPRODUCTION_CHANCE or #species.genomes == 1 then
 			--Copy a parent genome exactly
 			local parent = species.genomes[math.random(1,#species.genomes)]
 
@@ -23,7 +28,8 @@ function matingSeason(species)
 
 		mutateGenome(child)
 
-		return child
+		--Add the baby
+		table.insert(species.genomes,child)
 	end
 end
 
@@ -35,17 +41,18 @@ function mate(momGenome, dadGenome)
 	--Foreplay
 	--Organize parent synapses by historical marking
 	local momSynapses = {}
-	for i=1,#mom.synapses do
-		local synapse = mom.synapses[i]
+	for i=1,#momGenome.synapses do
+		local synapse = momGenome.synapses[i]
 		momSynapses[synapse.historicalMarking] = synapse
 	end
 
 	local dadSynapses = {}
-	for i=1,#dad.synapses do
-		local synapse = dad.synapses[i]
+	for i=1,#dadGenome.synapses do
+		local synapse = dadGenome.synapses[i]
 		dadSynapses[synapse.historicalMarking] = synapse
 	end
-
+	print("Mom synapses: ",#momGenome.synapses)
+	print("Dad synapses: ",#dadGenome.synapses)
 	--Now we have two arrays that we can match up
 
 	--The dirty
@@ -53,7 +60,7 @@ function mate(momGenome, dadGenome)
 	for historicalMarking,momSynapse in pairs(momSynapses) do
 		local dadSynapse = dadSynapses[historicalMarking]
 
-		if dadSynapse != nil then
+		if dadSynapse ~= nil then
 			--There is a matching synapse. Use the synapse from the fitter parent
 			if momGenome.fitness > dadGenome.fitness then
 				table.insert(child.synapses, momSynapse)
@@ -61,7 +68,7 @@ function mate(momGenome, dadGenome)
 				table.insert(child.synapses, dadSynapse)
 			else
 				--They have the same fitness, random
-				if random(2) == 1 then
+				if math.random(2) == 1 then
 					table.insert(child.synapses, momSynapse)
 				else
 					table.insert(child.synapses, dadSynapse)
@@ -71,9 +78,9 @@ function mate(momGenome, dadGenome)
 			--Disjoint or Excess NEAT gene. Only keep if it's the fitter parent
 			if momGenome.fitness > dadGenome.fitness then
 				table.insert(child.synapses, momSynapse)
-			else if momGenome.fitness == dadGenome.fitness then
+			elseif momGenome.fitness == dadGenome.fitness then
 				--If they're the same fitness, randomly decide to keep or not
-				if random(2) ==1 then
+				if math.random(2) ==1 then
 					table.insert(child.synapses, momSynapse)
 				end
 			end
@@ -88,8 +95,8 @@ function mate(momGenome, dadGenome)
 		if momSynapse == nil then
 			if dadGenome.fitness > momGenome.fitness then
 				table.insert(child.synapses, dadSynapse)
-			else if dadGenome.fitness == momGenome.fitness then
-				if random(2) == 1 then
+			elseif dadGenome.fitness == momGenome.fitness then
+				if math.random(2) == 1 then
 					table.insert(child.synapses, dadSynapse)
 				end
 			end
@@ -110,7 +117,7 @@ function findPartner(parentIndex, genomes)
 		if partnerIndex == #genomes then
 			partnerIndex = 1
 		else
-			partnerIndex++
+			partnerIndex = partnerIndex + 1
 		end
 	end
 

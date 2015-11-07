@@ -1,9 +1,17 @@
+--Pretty print
+local pretty = require "pl.pretty".dump
+
+require("util/getRandomNeuron")
+require("util/generateNeurons")
+
 local MUTATE_ADD_SYNAPSE = 1
 local MUTATE_ADD_NEURON = 2
 local MUTATE_MODIFY_SYNAPSE = 3
 
 --Create mutations on the genome 
 function mutateGenome(genome)
+	print("mutateGenome: genome")
+	print(pretty(genome))
 	--Modify the mutation rates?
 
 	--Determine if we should re-weigh synapses
@@ -23,7 +31,7 @@ function mutateGenome(genome)
 end
 
 --Mutate all weights of synapses
-local function mutateSynapseWeights(genome)
+function mutateSynapseWeights(genome)
 	for i=1,#genome.synapses do
 		local synapse = genome.synapses[i]
 
@@ -39,9 +47,10 @@ local function mutateSynapseWeights(genome)
 end
 
 --Randomly pick two neurons to connect
-local function mutateAddSynapse(genome)
-	local fromNeuron = getRandomNeuron(genome.neurons, true)
-	local toNeuron = getRanndomNeuron(genome.neurons, false)
+function mutateAddSynapse(genome)
+	local neurons = generateNeurons(genome.synapses)
+	local fromNeuron = getRandomNeuron(neurons, true)
+	local toNeuron = getRandomNeuron(neurons, false)
 
 	local newSynapse = Synapse:new()
 
@@ -50,9 +59,9 @@ local function mutateAddSynapse(genome)
 
 	--Check to make sure we're not adding a synapse that already exists
 	-- (perhaps this should never be possible?)
-	if(synapseExists(newSynapse, genome.synapses)) then
-		return
-	end
+	--if(synapseExists(newSynapse, genome.synapses)) then
+	--	return
+	--end
 
 	--Give the new synapse a random weight
 	newSynapse.weight = math.random()
@@ -61,7 +70,7 @@ local function mutateAddSynapse(genome)
 end
 
 --Randomly pick a synapse to split and add a neuron to
-local function mutateAddNeuron(genome)
+function mutateAddNeuron(genome)
 	--No synapses to split?
 	if #genome.synapses == 0 then
 		return
@@ -71,7 +80,7 @@ local function mutateAddNeuron(genome)
 	local splitSynapse = genome.synapses[math.random(1,#genome.synapses)]
 
 	--If the synapse is disabled, ignore this (Should this even be possible?)
-	if not splitSynapse.enabled
+	if not splitSynapse.enabled then
 		return
 	end
 
@@ -79,7 +88,7 @@ local function mutateAddNeuron(genome)
 	splitSynapse.enabled = false
 
 	--Create a new neuron
-	genome.maxNeuron += 1
+	genome.maxNeuron = genome.maxNeuron + 1
 
 	--TODO assign these synapses IDs
 	local firstSynapse = Synapse:new()

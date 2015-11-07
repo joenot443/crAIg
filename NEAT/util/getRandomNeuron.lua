@@ -1,15 +1,15 @@
 --If allowInput, it can return an input neuron
-function randomNeuron(neurons, allowInput)
+function getRandomNeuron(neurons, allowInput)
 	local startValue = 1
 
 	if not allowInput then
-		startValue += INPUT_COUNT
+		startValue = INPUT_COUNT
 	end
 
 	--Count the number of neurons
-	local neuronCount
+	local neuronCount = 0
 	for _,_ in pairs(neurons) do
-		neuronCount += 1
+		neuronCount = neuronCount + 1
 	end
 
 	local neuronNumber = math.random(startValue, neuronCount)

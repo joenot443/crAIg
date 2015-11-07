@@ -4,7 +4,7 @@ function Species:new()
 	local species = {}
 
 	-- How many genomes are there supposed to be in this species?
-	species.populationSize
+	species.populationSize = 0
 
 	-- Fill with Genome objects
 	species.genomes = {}
@@ -16,7 +16,7 @@ function Species:new()
 	species.extinctionCounter = 0
 
 	-- Which genome are we using as a metric for which genomes are part of this species or not
-	species.candidateGenome = 0
+	species.candidateGenome = {}
 
 	return species
 end
