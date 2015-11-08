@@ -3,6 +3,7 @@ require("NEAT/extinction")
 require("NEAT/matingSeason")
 require("NEAT/reSpeciate")
 require("NEAT/survivalOfTheFittest")
+require("NEAT/util/calculateAdjustedFitnesses")
 
 --Evolve crAIg into the next generation
 function newGeneration(crAIg)
@@ -11,31 +12,38 @@ function newGeneration(crAIg)
 	-- 		Pick a species "candidate genome"
 	print("Calculating deep fitness for ",#crAIg.species, " species")
 	for s=1,#crAIg.species do
-		deepFitnessCalculate(crAIg.species[s])
+		deepFitnessCalculate(crAIg.species[s],crAIg)
 	end
+
+	-- 2. Calculate the adjusted fitnesses of all genomes
+	print("Calculating adjusted fitnesses for ",#crAIg.species, " species")
+	crAIg.totalAdjustedFitness = calculateAdjustedFitnesses(crAIg)
 
 
 	print("Running survival of the fittest for ",#crAIg.species, " species")
-	-- 2. Survival of the Fittest
+	-- 3. Survival of the Fittest
 	for s=1,#crAIg.species do
-		survivalOfTheFittest(crAIg.species[s])
+		survivalOfTheFittest(crAIg.species[s], crAIg.totalAdjustedFitness)
 	end
 
 	print("Simulating extinction for ",#crAIg.species, " species")
-	-- 3. Remove any species that have been around for too long without being good
+	-- 4. Remove any species that have been around for too long without being good
 	extinction(crAIg.species)
 
-	-- 4. Remove any species that are so weak they're without hope (?)
+	-- 5. Remove any species that are so weak they're without hope (?)
 
 	print("Simulating mating season for ",#crAIg.species, " species")
-	-- 5. Make babies!
+	-- 6. Make babies!
 	for s=1,#crAIg.species do
 		matingSeason(crAIg.species[s])
 	end
 
 	print("Respeciating among ",#crAIg.species, " species")
-	-- 6. Re-organize species accordingly
+	-- 7. Re-organize species accordingly
 	reSpeciate(crAIg)
 
-	-- 7. Done!
+	print("Final species count: ",#crAIg.species)
+
+	-- 8. Done!
+	print("-------------GENERATION DONE---------------")
 end

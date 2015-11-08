@@ -51,8 +51,8 @@ function mutateAddSynapse(genome)
 
 	local newSynapse = Synapse:new()
 
-	newSynapse.from = fromNeuron
-	newSynapse.to = toNeuron
+	newSynapse.from = fromNeuron.label
+	newSynapse.to = toNeuron.label
 
 	--Check to make sure we're not adding a synapse that already exists
 	-- (perhaps this should never be possible?)

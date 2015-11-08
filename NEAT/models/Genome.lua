@@ -19,6 +19,9 @@ function Genome:new()
 	--Calculated using fitness function
 	genome.fitness = 0
 
+	--Calculated using adjusted fitness function
+	genome.adjustedFitness = 0
+
 	return genome
 end
 
