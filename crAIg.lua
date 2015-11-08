@@ -12,20 +12,24 @@ require("testcrAIg")
 require("chooseOutputs")
 require("marioCraig")
 require("NEAT/util/deepFitnessCalculate")
+require("persistence");
+
+
 
 local crAIg = getCraig()
 crAIg.generation = 0
 
+while (true) do 
+	newGeneration(crAIg);
+	local crAIgName = "crAIgs/crAIg-saved-"..crAIg.generation..".lua";
+	persistence.store(crAIgName, crAIg);
+end
 
-newGeneration(crAIg);
-newGeneration(crAIg);
-newGeneration(crAIg);
-newGeneration(crAIg);
-newGeneration(crAIg);
-newGeneration(crAIg);
-newGeneration(crAIg);
-newGeneration(crAIg);
-newGeneration(crAIg);
+
+
+
+
+
 
 print("Test finished.")
 
