@@ -46,13 +46,15 @@ end
 --Randomly pick two neurons to connect
 function mutateAddSynapse(genome)
 	local neurons = generateNeurons(genome.synapses)
-	local fromNeuron = getRandomNeuron(neurons, true)
-	local toNeuron = getRandomNeuron(neurons, false)
+	local fromNeuron = getRandomNeuron(neurons, true, 0)
+	local toNeuron = getRandomNeuron(neurons, false, fromNeuron.label)
 
 	local newSynapse = Synapse:new()
 
+	print(fromNeuron.label,">",toNeuron.label)
 	newSynapse.from = fromNeuron.label
 	newSynapse.to = toNeuron.label
+	newSynapse.createdby = "addsynapse"
 
 	--Check to make sure we're not adding a synapse that already exists
 	-- (perhaps this should never be possible?)
@@ -93,12 +95,17 @@ function mutateAddNeuron(genome)
 	firstSynapse.to = genome.maxNeuron
 	firstSynapse.weight = 1
 	firstSynapse.enabled = true
+	firstSynapse.createdby = "addneuron1"
 
 	local secondSynapse = Synapse:new()
 	secondSynapse.from = genome.maxNeuron
 	secondSynapse.to = splitSynapse.to
 	secondSynapse.weight = splitSynapse.weight
 	secondSynapse.enabled = true
+	secondSynapse.createdby = "addneuron2"
+
+	print(firstSynapse.from,">",firstSynapse.to)
+	print(secondSynapse.from,">",secondSynapse.to)
 
 	--Add both new synapses
 	table.insert(genome.synapses, firstSynapse)

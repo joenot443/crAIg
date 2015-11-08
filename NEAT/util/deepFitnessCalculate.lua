@@ -4,9 +4,11 @@ function deepFitnessCalculate(species)
 	print("Calculating fitness for ",#species.genomes," genomes")
 	for i=1,#species.genomes do
 		local genome = species.genomes[i]
-		print("\t\tStarting calculation for genome with: " , #genome.synapses);
-		print(pretty(genome.synapses));
-		genome.fitness = calculateFitness(genome);		-- print("\t\tFitness calculated: ",genome.fitness)
+
+		print("\t\tStarting calculation for genome with",#genome.synapses," synapses")
+		print(pretty(genome.synapses))
+		genome.fitness = calculateFitness(genome)
+		print("\t\tFitness calculated: ",genome.fitness)
 	end
 
 	--Set the representative for the species
