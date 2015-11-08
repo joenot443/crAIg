@@ -10,6 +10,8 @@ local GOOMBA = 2
 nodes = {};
 connections = {};
 
+connectionsLitMap = {};
+
 require('NEAT/util/generateNeurons')
 require('NEAT/models/Node')
 require('NEAT/models/connection')
@@ -22,8 +24,14 @@ function solveNode(node)
 		if (conn.to.litTile and conn.litTile) then return end;
 		if (conn.to.litGoomba and conn.litGoomba) then return end;
 		--Only try to light the node if it's not lit already
-		if (conn.type == 1 and node.litTile) then conn.to.litTile = true end;
-		if (conn.type == 2 and node.litGoomba) then conn.to.litGoomba = true end;
+		if (conn.type == 1 and node.litTile) then 
+			conn.to.litTile = true;
+			connectionsLitMap[conn.id].lit = true;
+			end;
+		if (conn.type == 2 and node.litGoomba) then 
+			conn.to.litGoomba = true;
+			connectionsLitMap[conn.id].lit = true;
+			end;
 		return solveNode(conn.to);
 	end
 
@@ -50,6 +58,14 @@ function chooseOutputs(synapses, tiles)
 		connection.to = nodes[syn.to];
 		connection.from = nodes[syn.from];
 		connection.weight = syn.weight;
+		--Object specifically to pass to the server to show the status of the synapse
+		local connectionLit = {};
+		connectionLit.type = syn.type;
+		connectionLit.lit = false;
+		connectionLit.historicalMarking = syn.historicalMarking;
+		--Add it to the litMap
+		connectionsLitMap[syn.historicalMarking] = connectionLit;
+
 		table.insert(nodes[syn.from].connections, connection);
 		table.insert(connections, connection);
 	end;

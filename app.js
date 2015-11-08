@@ -20,6 +20,7 @@ io.on('connection', function (socket) {
 
 	//Set up a timer to send the JSON file
 	setInterval(sendGrid, 500);
+	setInterval(sendSynapsesUpdate, 500);
 
 	function sendGrid() {
 		console.log("Sending grid");
@@ -33,6 +34,14 @@ io.on('connection', function (socket) {
 		var fs = require('fs');
 		var synapses = JSON.parse(fs.readFileSync('network.json', 'utf8'));
 		socket.emit('synapses', synapses);
+	}
+	sendSynapses();
+
+	function sendSynapsesUpdate(){
+		console.log("Sending synapses update");
+		var fs = require('fs');
+		var synapses = JSON.parse(fs.readFileSync('litmap.json', 'utf8'));
+		socket.emit('synapses_update', synapses);
 	}
 
 });

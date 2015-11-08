@@ -2,6 +2,7 @@
   "enabled": true,
   "from": 111,
   "historicalMarking": 1,
+  "lit": false,
   "to": 176,
   "type": 1,
   "weight": 0
@@ -9,6 +10,7 @@
   "enabled": true,
   "from": 112,
   "historicalMarking": 2,
+  "lit": false,
   "to": 170,
   "type": 1,
   "weight": 0
@@ -16,8 +18,8 @@
   "enabled": true,
   "from": 112,
   "historicalMarking": 3,
+  "lit": false,
   "to": 173,
   "type": 1,
   "weight": 0
 } ]
-

@@ -25,6 +25,8 @@ function Synapse:new()
 	synapse.enabled = true
 
 	synapse.type = TILE;
+
+	synapse.lit = false;
 	return synapse
 end
 

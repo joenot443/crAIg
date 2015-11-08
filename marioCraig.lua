@@ -21,6 +21,7 @@ local JSON = require('json');
 
 --Game frame count
 local ticker = 0;
+local firstRun = true;
 
 --Save and persist our initial state
 local originalState = savestate.create();
@@ -66,9 +67,21 @@ function runFrame(outputs)
 		io.write(JSON:encode_pretty(data));
 		io.close();
 		print(pretty(synapses));
-		local file = io.open('network.json', 'w+');
+		if (firstRun) then 
+			local file = io.open('network.json', 'w+');
+			io.output(file);
+			io.write(JSON:encode_pretty(synapses));
+			io.close();
+			firstRun = false;
+		end
+		local file = io.open('litmap.json', 'w+');
 		io.output(file);
-		io.write(JSON:encode_pretty(synapses));
+		local connectionsLitArr = {};
+		for k,v in pairs(connectionsLitMap) do
+			table.insert(connectionsLitArr, v);
+		end
+
+		io.write(JSON:encode_pretty(connectionsLitArr));
 		io.close();
 		ticker = 0;
 	end
