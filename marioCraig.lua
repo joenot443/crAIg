@@ -17,7 +17,7 @@ local joyB		= {B=true};
 --Require files
 --local FileOut = require('FileOut');
 local ReadMemory = require('ReadMemory');
-local JSON = require('JSON');
+local JSON = require('json');
 
 --Game frame count
 local ticker = 0;
@@ -65,12 +65,10 @@ function runFrame(outputs)
 		io.output(file);
 		io.write(JSON:encode_pretty(data));
 		io.close();
-		local networkData = {};
-		networkData['nodes'] = nodes;
-		networkData['connections'] = connections;
+		print(pretty(synapses));
 		local file = io.open('network.json', 'w+');
 		io.output(file);
-		io.write(JSON:encode_pretty(nodes));
+		io.write(JSON:encode_pretty(synapses));
 		io.close();
 		ticker = 0;
 	end

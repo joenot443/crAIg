@@ -860,7 +860,8 @@ function encode_value(self, value, parents, etc, options, indent)
       end
 
       if parents[T] then
-         self:onEncodeError("table " .. tostring(T) .. " is a child of itself", etc)
+         parents[T] = "Parent";
+         --self:onEncodeError("table " .. tostring(T) .. " is a child of itself", etc)
       else
          parents[T] = true
       end

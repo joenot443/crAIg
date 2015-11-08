@@ -51,6 +51,7 @@ function chooseOutputs(synapses, tiles)
 		connection.from = nodes[syn.from];
 		connection.weight = syn.weight;
 		table.insert(nodes[syn.from].connections, connection);
+		table.insert(connections, connection);
 	end;
 
 	--Check the power of the first layer of Nodes

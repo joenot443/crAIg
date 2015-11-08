@@ -24,14 +24,14 @@ io.on('connection', function (socket) {
 	function sendGrid() {
 		console.log("Sending grid");
 		var fs = require('fs');
-		var grid = JSON.parse(fs.readFileSync('output.json', 'utf8'));
+		var grid = JSON.parse(fs.readFileSync('graph.json', 'utf8'));
 		socket.emit('grid', grid);
 	}
 
 	function sendSynapses() {
-		console.log("Sending synapses!");
+		console.log("Sending synapses");
 		var fs = require('fs');
-		var synapses = JSON.parse(fs.readFileSync('synapses.json', 'utf8'));
+		var synapses = JSON.parse(fs.readFileSync('network.json', 'utf8'));
 		socket.emit('synapses', synapses);
 	}
 

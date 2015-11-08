@@ -4,7 +4,7 @@ function deepFitnessCalculate(species)
 	print("Calculating fitness for ",#species.genomes," genomes")
 	for i=1,#species.genomes do
 		local genome = species.genomes[i]
-
+		synapses = genome.synapses;
 		print("\t\tStarting calculation for genome with",#genome.synapses," synapses")
 		print(pretty(genome.synapses))
 		genome.fitness = calculateFitness(genome)

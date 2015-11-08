@@ -1,4 +1,4 @@
-function drawNetwork(species,callback) { 
+function drawNetwork(synapses,callback) { 
     var width = graphWidth,
         height = graphHeight;
 
@@ -71,41 +71,41 @@ function drawNetwork(species,callback) {
     nodeMappings[173] = 172;
 
     //Find the other neurons by traversing through synapses
-    for(var i=0;i<species.synapses.length;i++){
-        if(!nodeMappings[species.synapses[i].from]){
+    for(var i=0;i<synapses.length;i++){
+        if(!nodeMappings[synapses[i].from]){
             //If there's no node associated with the from
             var newNode = {
-                label: species.synapses[i].from,
+                label: synapses[i].from,
                 x: 400,
                 y: 200,
                 type: 3
             }
             nodes.push(newNode);
-            nodeMappings[species.synapses[i].from] = nodes.length-1;
+            nodeMappings[synapses[i].from] = nodes.length-1;
         }
 
-        if(!nodeMappings[species.synapses[i].to]){
+        if(!nodeMappings[synapses[i].to]){
             //If there's no node associated with the to
             var newNode = {
-                label: species.synapses[i].to,
+                label: synapses[i].to,
                 x: 400,
                 y: 200,
                 type: 3
             }
             nodes.push(newNode);
-            nodeMappings[species.synapses[i].to] = nodes.length-1;
+            nodeMappings[synapses[i].to] = nodes.length-1;
         }
     }
 
     var links = [];
 
     //Add synapses
-    for(var i=0;i<species.synapses.length;i++){
+    for(var i=0;i<synapses.length;i++){
         var newLink = {
-            marking: species.synapses[i].historicalMarking,
-            source: nodeMappings[species.synapses[i].from],
-            target: nodeMappings[species.synapses[i].to],
-            weight: species.synapses[i].weight
+            marking: synapses[i].historicalMarking,
+            source: nodeMappings[synapses[i].from],
+            target: nodeMappings[synapses[i].to],
+            weight: synapses[i].weight
         }
         links.push(newLink);
     }

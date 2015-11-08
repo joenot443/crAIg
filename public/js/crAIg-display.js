@@ -101,6 +101,9 @@ $(document).ready(function(){
                 socket.on('grid', function(data) {
                   updateGrid(data);
                 });
+                socket.on('synapses', function(data) {
+                    drawNetwork(synapses);
+                }
                 watchingSocket = true;
             }
         });
