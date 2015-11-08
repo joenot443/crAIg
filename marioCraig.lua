@@ -65,9 +65,6 @@ function runFrame(outputs, genome)
 		io.output(file);
 		io.write(JSON:encode_pretty(data));
 		io.close();
-		print(pretty(synapses));
-
-		print(firstRun);
 		
 		if (firstRun) then 
 			local file = io.open('network.json', 'w+');

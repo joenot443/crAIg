@@ -1,10 +1,10 @@
 --Children per gen
-BABIES_PER_GENERATION = 40
+BABIES_PER_GENERATION = 20
 
 --Probabilities of different mutations occuring
 SYNAPSE_WEIGHT_MUTATION_CHANCE = 0.8
 ADD_SYNAPSE_MUTATION_CHANCE = 1.0
-ADD_NEURON_MUTATION_CHANCE = 1.0
+ADD_NEURON_MUTATION_CHANCE = 0.3
 
 --When mutating a synapse, chance that we perturb it uniformly or randomize
 SYNAPSE_WEIGHT_PERTURB_MUTATION_CHANCE = 0.9
@@ -20,8 +20,8 @@ SYNAPSE_INHERIT_DISABLED_CHANCE = 0.75
 ASEXUAL_REPRODUCTION_CHANCE = 0.25
 
 --If you're in the bottom {EXTINCTION_CANDITATE}%, then mark for extinction in {EXTINCTION GENERATIONS} generations
-EXTINCTION_GENERATIONS = 5
-EXTINCTION_CANDIDATE = 0.3
+EXTINCTION_GENERATIONS = 3
+EXTINCTION_CANDIDATE = 0.4
 
 --Used in equation 1 from the paper
 COMPATIBILITY_C1 = 1
@@ -31,6 +31,9 @@ SMALL_GENOME_THRESHOLD = 20
 
 --Used to decide if species should be in the same or different species
 COMPATIBILITY_THRESHOLD = 5.0
+
+--
+FITNESS_WEIGHT = 3
 
 --I/O
 OUTPUTS = {

@@ -1,5 +1,5 @@
 var pixels = [[]];
-var colours = {'0': 'gray', '-1': 'red', '2': 'green'};
+var colours = {'0': 'gray', '3': 'red', '2': 'green'};
 
 function drawMarioGrid() {
 	pixels = [[]];

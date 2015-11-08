@@ -15,9 +15,8 @@ function calculateAdjustedFitnesses(crAIg)
 			genome.adjustedFitness = genome.fitness / #species.genomes
 
 			species.sumAdjustedFitness = species.sumAdjustedFitness + genome.adjustedFitness
-
-			totalSumAdjustedFitnesses = totalSumAdjustedFitnesses + species.sumAdjustedFitness
 		end
+		totalSumAdjustedFitnesses = totalSumAdjustedFitnesses + species.sumAdjustedFitness
 	end
 
 	return totalSumAdjustedFitnesses

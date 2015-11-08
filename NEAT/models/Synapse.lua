@@ -24,7 +24,7 @@ function Synapse:new()
 	-- Whether the synapse is being expressed or not
 	synapse.enabled = true
 
-	synapse.type = TILE;
+	synapse.type = math.random(TILE,GOOMBA)
 
 	synapse.lit = false;
 	return synapse

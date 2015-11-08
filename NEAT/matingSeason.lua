@@ -8,20 +8,20 @@ function matingSeason(species)
 	local child = Genome:new()
 	local babyCount = species.populationSize - #species.genomes
 
-	print("\tMaking ",babyCount," babies")
+	print("\tSpecies ",species.id," making ",babyCount," babies")
 
 	for i=1,babyCount do
 
 		--Asexually reproduce by chance or if there is only one parent
 		if math.random() < ASEXUAL_REPRODUCTION_CHANCE or #species.genomes == 1 then
 			--Copy a parent genome exactly
-			print("\tAsexual reproduction")
+			--print("\tAsexual reproduction")
 			local parent = species.genomes[math.random(1,#species.genomes)]
 
 			child = Genome:copy(parent)
 		else
 			--Mate
-			print("\tSexual reproduction",#species.genomes)
+			--print("\tSexual reproduction",#species.genomes)
 			local momIndex = math.random(1,#species.genomes)
 			local mom = species.genomes[momIndex]
 			local dad = findPartner(momIndex,species.genomes)
@@ -54,8 +54,6 @@ function mate(momGenome, dadGenome)
 		local synapse = dadGenome.synapses[i]
 		dadSynapses[synapse.historicalMarking] = synapse
 	end
-	print("\tMom synapses: ",#momGenome.synapses)
-	print("\tDad synapses: ",#dadGenome.synapses)
 	--Now we have two arrays that we can match up
 
 	--The dirty
@@ -110,12 +108,10 @@ function mate(momGenome, dadGenome)
 	--Calculate the child's max neuron
 	for s=1,#child.synapses do 
 		if(child.synapses[s].to > child.maxNeuron) then
-			print("Updated child's max neuron")
 			child.maxNeuron = child.synapses[s].to
 		end
 
 		if(child.synapses[s].from > child.maxNeuron) then
-			print("Updated child's max neuron")
 			child.maxNeuron = child.synapses[s].from
 		end
 	end

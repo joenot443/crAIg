@@ -9,7 +9,6 @@ local MUTATE_MODIFY_SYNAPSE = 3
 
 --Create mutations on the genome 
 function mutateGenome(genome)
-	print("MAX NEURON",genome.maxNeuron)
 	--Modify the mutation rates?
 
 	--Determine if we should re-weigh synapses
@@ -19,6 +18,7 @@ function mutateGenome(genome)
 
 	--Determine if we should add a synapse
 	if math.random() < ADD_SYNAPSE_MUTATION_CHANCE then
+		mutateAddSynapse(genome)
 		mutateAddSynapse(genome)
 	end
 
@@ -52,10 +52,8 @@ function mutateAddSynapse(genome)
 
 	local newSynapse = Synapse:new()
 
-	print(fromNeuron.label,">",toNeuron.label)
 	newSynapse.from = fromNeuron.label
 	newSynapse.to = toNeuron.label
-	newSynapse.createdby = "addsynapse"
 
 	--Check to make sure we're not adding a synapse that already exists
 	-- (perhaps this should never be possible?)
@@ -97,7 +95,6 @@ function mutateAddNeuron(genome)
 	firstSynapse.to = genome.maxNeuron
 	firstSynapse.weight = 1
 	firstSynapse.enabled = true
-	firstSynapse.createdby = "addneuron1"
 
 
 	local secondSynapse = Synapse:new()
@@ -105,11 +102,6 @@ function mutateAddNeuron(genome)
 	secondSynapse.to = splitSynapse.to
 	secondSynapse.weight = splitSynapse.weight
 	secondSynapse.enabled = true
-	secondSynapse.createdby = "addneuron2"
-	secondSynapse.oldSynapse = splitSynapse
-
-	print(firstSynapse.from,">",firstSynapse.to)
-	print(secondSynapse.from,">",secondSynapse.to)
 
 	--Add both new synapses
 	table.insert(genome.synapses, firstSynapse)
