@@ -46,7 +46,6 @@ io.on('connection', function (socket) {
 		};
 
 	}
-	checkSendSynapses();
 
 	function sendSynapsesUpdate(){
 		console.log("Sending synapses update");
