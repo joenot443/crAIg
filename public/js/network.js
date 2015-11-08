@@ -120,7 +120,18 @@ function drawNetwork(synapses,callback) {
     var link = svg.selectAll('.link')
         .data(links)
         .enter().append('line')
-        .attr('class', 'link active-link')
+        .attr('class', function(d){
+            var baseClass = "link"
+            switch(d.type){
+                case 1:
+                    baseClass += " type-goomba"
+                    break;
+                case 2:
+                    baseClass += " type-tile"
+                    break;
+            }
+            return baseClass
+        })
         .attr("marking", function(d){
             if(d.marking){
                 return d.marking
@@ -137,8 +148,10 @@ function drawNetwork(synapses,callback) {
                 baseClass += " input-node"
                 break;
             case 2:
+                baseClass += " output-node"
+                break;
             case 3:
-                baseClass += " active-node"
+                baseClass += " hidden-node"
                 break;
         }
 
@@ -173,4 +186,21 @@ function drawNetwork(synapses,callback) {
     });
 
     force.start();
+}
+
+function updateNetworkStates(synapses){
+    var neuronMap = {}
+
+    for(var i=0;i<synapses.length;i++){
+        neuronMap[synapses[i].historicalMarking] = synapses[i].lit;
+    }
+
+    $(".link").each(function(index,el){
+        var marking = el.getAttribute("marking");
+        if(neuronMap[marking]){
+            $(el).addClass("active-link");
+        } else {
+            $(el).removeClass("active-link");
+        }
+    })
 }

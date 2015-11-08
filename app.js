@@ -26,9 +26,13 @@ io.on('connection', function (socket) {
 	var lastGenome = 0;
 	function sendGrid() {
 		console.log("Sending grid");
-		var fs = require('fs');
-		var grid = JSON.parse(fs.readFileSync('graph.json', 'utf8'));
-		socket.emit('grid', grid);
+		var graph = fs.readFileSync("graph.json");
+		try {
+			var grid = JSON.parse(graph);
+			socket.emit('grid', grid);
+		} catch(e){
+			console.log("Skipping send because file un-parseable");
+		}
 	}
 	//Check if we need to send new synapses
 	function checkSendSynapses() {
@@ -40,14 +44,18 @@ io.on('connection', function (socket) {
 			socket.emit('synapses', synapses);
 			lastGenome = synapses.genome;
 		};
+
 	}
 	checkSendSynapses();
 
 	function sendSynapsesUpdate(){
 		console.log("Sending synapses update");
-		var fs = require('fs');
-		var synapses = JSON.parse(fs.readFileSync('litmap.json', 'utf8'));
-		socket.emit('synapses_update', synapses);
+		try {
+			var synapses = JSON.parse(fs.readFileSync('litmap.json', 'utf8'));
+			socket.emit('synapses_update', synapses);
+		} catch(e){
+			console.log("Skipping send because file un-parseable 3");
+		}
 	}
 
 });
