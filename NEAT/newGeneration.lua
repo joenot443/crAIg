@@ -7,6 +7,7 @@ require("NEAT/util/calculateAdjustedFitnesses")
 
 --Evolve crAIg into the next generation
 function newGeneration(crAIg)
+	crAIg.generation = crAIg.generation + 1
 	print("-------------GENERATION----------------")
 	-- 1. Calculate Fitness of all genomes and species
 	-- 		Pick a species "candidate genome"

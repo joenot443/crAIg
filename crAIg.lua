@@ -14,6 +14,7 @@ require("marioCraig")
 require("NEAT/util/deepFitnessCalculate")
 
 local crAIg = getCraig()
+crAIg.generation = 0
 
 
 newGeneration(crAIg);
