@@ -37,6 +37,8 @@ var testNetwork = {
 var graphWidth = 750;
 var graphHeight = 750;
 
+var watchingSocket = false;
+
 $(document).ready(function(){
     //Add SVG to stage
     d3.select("body")
@@ -49,6 +51,7 @@ $(document).ready(function(){
 
     //Draw network
     drawNetwork(testNetwork, function(){
+
         //Now that everything is loaded, we can bind buttons
         $(".node").hide();
         $(".link").hide();
@@ -63,6 +66,17 @@ $(document).ready(function(){
             } else {
                 $(".node").hide();
                 $(".link").hide();
+            }
+        });
+
+        $("#watch-socket").click(function(){
+            //Start watching socket
+            if(!watchingSocket){
+                var socket = io.connect('http://localhost');
+                socket.on('grid', function(data) {
+                  updateGrid(data);
+                });
+                watchingSocket = true;
             }
         });
 
