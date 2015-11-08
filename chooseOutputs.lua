@@ -31,7 +31,6 @@ end
 function chooseOutputs(synapses, tiles)
 	
 	local neurons = generateNeurons(synapses);
-	print(pretty(synapses));
 
 	--Create a Node for every Neuron and add it to the nodes
 	for k, neur in pairs(neurons) do
@@ -87,7 +86,6 @@ function chooseOutputs(synapses, tiles)
 	local nodeRight = nodes[RIGHT];
 	local nodeLeft 	= nodes[LEFT];
 
-	print(pretty(nodes[111]));
 
 	local outputs = {};
 
@@ -96,7 +94,6 @@ function chooseOutputs(synapses, tiles)
 	outputs.b 		= nodeB.litTile or nodeB.litGoomba;
 	outputs.right 	= nodeRight.litTile or nodeRight.litGoomba;
 	outputs.left 	= nodeLeft.litTile or nodeLeft.litGoomba;
-print(pretty(outputs));
 	return outputs;
 	-- print(pretty(nodes));
 	--Check if we've created a Node from the IDs yet

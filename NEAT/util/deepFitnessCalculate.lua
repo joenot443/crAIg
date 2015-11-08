@@ -5,6 +5,7 @@ function deepFitnessCalculate(species)
 	for i=1,#species.genomes do
 		local genome = species.genomes[i]
 		genome.fitness = calculateFitness(genome)
+		print("\t\tFitness calculated: ",genome.fitness)
 	end
 
 	--Set the representative for the species
@@ -13,8 +14,39 @@ function deepFitnessCalculate(species)
 end
 
 function calculateFitness(genome)
-	--This is where mario comes in
-	return 1
+	local tiles = initialState();
+	local lastX;
+	local running = true;
+	local framesSinceProgress = 0;
+
+	while (running) do
+		local outputs = chooseOutputs(genome.synapses, tiles)
+		local currentPosition = getMarioXPos();
+		
+		if currentPosition == lastX then
+			framesSinceProgress = framesSinceProgress + 1;
+		else 
+			framesSinceProgress = 0;
+			lastX = currentPosition;
+		end
+
+		if framesSinceProgress > 50 then
+			running = false;
+		end
+
+		tiles = runFrame(outputs);
+	end
+
+
+	return fitness(getMarioXPos()) 
+end
+
+function fitness(xpos)
+	return xpos
+end
+
+function getMarioXPos() 
+	return memory.readbyte(0x6D) * 0x100 + memory.readbyte(0x86);
 end
 
 function setCandidate(species)

@@ -22,6 +22,7 @@ local JSON = require('JSON');
 --Game frame count
 local ticker = 0;
 
+
 --Save and persist our initial state
 local originalState = savestate.object();
 savestate.save(originalState);
@@ -48,6 +49,7 @@ end
 
 function runFrame(outputs) 
 
+
 	ticker = ticker + 1;
 
 	--Every 30 frames we'll output a new file
@@ -68,15 +70,12 @@ function runFrame(outputs)
 	end
 
 	--Press joy buttons
-	if outputs.a then 	print("jumping");
-		joypad.set(1, joyA); end;
+	if outputs.a then joypad.set(1, joyA); end;
 	if outputs.b then joypad.set(1, joyB) end;	
 	if outputs.left then joypad.set(1, joyLeft) end;	
 	if outputs.right then joypad.set(1, joyRight) end;
 
 	emu.frameadvance();
-
-
 
 	return tiles;
 end;

@@ -29,7 +29,7 @@ end
 
 local function readScreen()
 	local screen = {};
-	screen['screenX'] = memory.readbyte(0x03AD);
+	screen['screenX'] = memory.readbyte(0x071D);
 	screen['screenY'] = memory.readbyte(0x03B8);
 	return screen;
 end
@@ -83,8 +83,7 @@ local function readTiles()
 		local enX = sprites[i]["x"];
 		local enY = sprites[i]["y"];
 
-		print(marioX - enX);
-		print(marioY - enY);
+
 
 		local enDX = - (marioX - enX) / 16;
 		local enDY = - (marioY - enY) / 16;
@@ -96,8 +95,6 @@ local function readTiles()
 
 			if (enRelTileY > 6) then enRelTileY = 6 - enRelTileY end;
 			--Ensure we're drawing in the bounds of our coords
-			print('enemyX ' .. enRelTileX);
-			print('enemyY ' .. enRelTileY);
 
 			if -6 < enRelTileY and enRelTileY < 6 and 0 < (enRelTileX + 8) and (enRelTileX + 8) < 14 then
 				tiles[enRelTileY][enRelTileX + 8] = 2
