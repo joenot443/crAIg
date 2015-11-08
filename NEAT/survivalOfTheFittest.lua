@@ -4,8 +4,8 @@ function survivalOfTheFittest(species, totalAdjustedFitness)
 	table.sort(species.genomes, function(a,b)
 		return (a.fitness > b.fitness)
 	end)
-
-	local theWeakCount = math.floor(species.sumAdjustedFitness / totalAdjustedFitness) * #species.genomes
+	print("# of genomes: ",#species.genomes)
+	local theWeakCount = math.floor(species.sumAdjustedFitness / totalAdjustedFitness * #species.genomes) - 1
 	print("\tThis species generates ",species.sumAdjustedFitness,"/",totalAdjustedFitness, " fitness")
 
 	local thoseWhoSurvived = #species.genomes - theWeakCount

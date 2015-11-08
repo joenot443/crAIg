@@ -17,6 +17,7 @@ local crAIg = getCraig()
 
 
 newGeneration(crAIg);
+newGeneration(crAIg);
 
 print("Test finished.")
 
