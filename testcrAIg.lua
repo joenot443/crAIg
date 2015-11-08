@@ -3,7 +3,12 @@ require("NEAT/models/Neuron")
 require("NEAT/models/Species")
 require("NEAT/models/Genome")
 
---Generate the species
+-- A 	= 170;
+-- B 	= 171;
+-- LEFT 	= 172;
+-- RIGHT	= 173;
+
+----Generate the species
 local species = Species:new()
 
 local genome1 = Genome:new()
@@ -128,7 +133,7 @@ local synapse10 = Synapse:new()
 local synapse10 = Synapse:new()
 	synapse10.historicalMarking = 3
 	synapse10.from = 112
-	synapse10.to = 170
+	synapse10.to = 173
 	table.insert(genome4.synapses, synapse10)
 
 

@@ -21,7 +21,7 @@ function matingSeason(species)
 			child = Genome:copy(parent)
 		else
 			--Mate
-			print("\tSexual reproduction")
+			print("\tSexual reproduction",#species.genomes)
 			local momIndex = math.random(1,#species.genomes)
 			local mom = species.genomes[momIndex]
 			local dad = findPartner(momIndex,species.genomes)
