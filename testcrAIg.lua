@@ -118,7 +118,7 @@ genome3.maxNeuron = 4
 	table.insert(genome3.synapses, Synapse:copy(synapse4))
 
 local genome4 = Genome:new()
-genome4.maxNeuron = 3
+genome4.maxNeuron = 176
 
 local synapse10 = Synapse:new()
 	synapse10.historicalMarking = 1
@@ -128,7 +128,7 @@ local synapse10 = Synapse:new()
 local synapse10 = Synapse:new()
 	synapse10.historicalMarking = 2
 	synapse10.from = 112
-	synapse10.to = 169
+	synapse10.to = 170
 	table.insert(genome4.synapses, synapse10)
 local synapse10 = Synapse:new()
 	synapse10.historicalMarking = 3

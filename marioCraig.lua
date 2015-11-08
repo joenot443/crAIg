@@ -69,7 +69,7 @@ function runFrame(outputs)
 		io.output(file);
 		io.write(JSON:encode_pretty(data));
 		io.close();
-		ticker = 0;o
+		ticker = 0;
 	end
 
 	--Press joy buttons
