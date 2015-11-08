@@ -9,9 +9,6 @@ function getRandomNeuron(neurons, allowInput, previousLabel)
 	--Count the number of neurons
 	local neuronCount = 0
 	for id,neuron in pairs(neurons) do
-		if(id ~= neuron.label) then
-			print("yo")
-		end
 		neuronCount = neuronCount + 1
 	end
 

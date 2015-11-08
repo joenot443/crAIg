@@ -23,10 +23,18 @@ function generateNeurons(synapses)
 	for i=1,#synapses do
 		local synapse = synapses[i]
 		--If they reference neurons that don't already exist
-		if (synapse.from > (INPUT_COUNT + OUTPUT_COUNT)) or (synapse.to > (INPUT_COUNT + OUTPUT_COUNT)) then
+		if (synapse.from > (INPUT_COUNT + OUTPUT_COUNT)) then
 			local hiddenNeuron = Neuron:new()
+			hiddenNeuron.label = synapse.from
 			table.insert(neurons,hiddenNeuron)
 		end
+
+		if (synapse.to > (INPUT_COUNT + OUTPUT_COUNT)) then
+			local hiddenNeuron = Neuron:new()
+			hiddenNeuron.label = synapse.to
+			table.insert(neurons,hiddenNeuron)
+		end
+
 	end
 
 	return neurons

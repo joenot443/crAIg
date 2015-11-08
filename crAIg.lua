@@ -19,6 +19,13 @@ crAIg.generation = 0
 
 newGeneration(crAIg);
 newGeneration(crAIg);
+newGeneration(crAIg);
+newGeneration(crAIg);
+newGeneration(crAIg);
+newGeneration(crAIg);
+newGeneration(crAIg);
+newGeneration(crAIg);
+newGeneration(crAIg);
 
 print("Test finished.")
 

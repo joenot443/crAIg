@@ -1,3 +1,5 @@
+require("NEAT/config")
+
 --Take a species and clear out the weak, return how many died
 function survivalOfTheFittest(species, totalAdjustedFitness)
 	--Sort them by fitness (maybe we should have calculated fitness beforehand?)
@@ -16,7 +18,7 @@ function survivalOfTheFittest(species, totalAdjustedFitness)
 	species.populationSize = #species.genomes
 
 	--Allow the species some children based on how successful it is
-	species.populationSize = species.populationSize + math.floor(species.sumAdjustedFitness / totalAdjustedFitness*40)
+	species.populationSize = species.populationSize + math.floor(species.sumAdjustedFitness / totalAdjustedFitness*BABIES_PER_GENERATION)
 
 
 	--Remove the necessary species

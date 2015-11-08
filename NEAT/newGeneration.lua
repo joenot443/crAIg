@@ -9,6 +9,7 @@ require("NEAT/util/calculateAdjustedFitnesses")
 function newGeneration(crAIg)
 	crAIg.generation = crAIg.generation + 1
 	print("-------------GENERATION----------------")
+	print("Starting gen ",crAIg.generation)
 	-- 1. Calculate Fitness of all genomes and species
 	-- 		Pick a species "candidate genome"
 	print("Calculating deep fitness for ",#crAIg.species, " species")
@@ -46,5 +47,6 @@ function newGeneration(crAIg)
 	print("Final species count: ",#crAIg.species)
 
 	-- 8. Done!
+	print("Finished generation ",crAIg.generation)
 	print("-------------GENERATION DONE---------------")
 end

@@ -99,6 +99,7 @@ function mutateAddNeuron(genome)
 	firstSynapse.enabled = true
 	firstSynapse.createdby = "addneuron1"
 
+
 	local secondSynapse = Synapse:new()
 	secondSynapse.from = genome.maxNeuron
 	secondSynapse.to = splitSynapse.to
