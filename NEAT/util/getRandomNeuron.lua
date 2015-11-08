@@ -1,6 +1,6 @@
 --If allowInput, it can return an input neuron
 function getRandomNeuron(neurons, allowInput, previousLabel)
-	local startValue = 1
+	local startValue = 50
 
 	if not allowInput then
 		startValue = 1 + INPUT_COUNT

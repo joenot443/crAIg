@@ -6,9 +6,8 @@ function survivalOfTheFittest(species, totalAdjustedFitness)
 	table.sort(species.genomes, function(a,b)
 		return (a.fitness > b.fitness)
 	end)
-	print("# of genomes: ",#species.genomes)
-	local theWeakCount = math.floor(species.sumAdjustedFitness / totalAdjustedFitness * #species.genomes) - 1
-	print("\tThis species generates ",species.sumAdjustedFitness,"/",totalAdjustedFitness, " fitness")
+	local theWeakCount = math.floor(species.sumAdjustedFitness / totalAdjustedFitness) - 1
+	print("\tSpecies ",species.id," generates ",species.sumAdjustedFitness,"/",totalAdjustedFitness, " fitness with ",#species.genomes," genomes")
 
 	local thoseWhoSurvived = #species.genomes - theWeakCount
 
@@ -18,7 +17,7 @@ function survivalOfTheFittest(species, totalAdjustedFitness)
 	species.populationSize = #species.genomes
 
 	--Allow the species some children based on how successful it is
-	species.populationSize = species.populationSize + math.floor(species.sumAdjustedFitness / totalAdjustedFitness*BABIES_PER_GENERATION)
+	species.populationSize = species.populationSize + math.floor((species.sumAdjustedFitness / totalAdjustedFitness)*BABIES_PER_GENERATION)
 
 
 	--Remove the necessary species
@@ -26,5 +25,5 @@ function survivalOfTheFittest(species, totalAdjustedFitness)
 		table.remove(species.genomes)
 	end
 
-	print("",#species.genomes," genomes left in species")
+	print("\tGenomes left in species ",species.id,":",#species.genomes)
 end

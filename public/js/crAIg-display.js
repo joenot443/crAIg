@@ -55,10 +55,12 @@ $(document).ready(function(){
             .attr("width", graphWidth+20)
             .attr("height", graphHeight+20);
 
+            
         //Draw the mario grid
         drawMarioGrid();
 
-        drawNetwork(data, function(){
+
+        drawNetwork(data.synapses, function(){
             console.log("Drew Network");
             //Add text to nodes that aren't input/output
             $(".node").each(function(i, el){
@@ -66,11 +68,13 @@ $(document).ready(function(){
                 if(type==3){
                     var x = parseInt(el.getAttribute("cx")) + 10;
                     var y = parseInt(el.getAttribute("cy")) + 10;
-                    d3.select("svg").append("text")
-                        .attr("x",x)
-                        .attr("y",y)
-                        .attr("class","node-label")
-                        .text(el.getAttribute("label"))
+                    if(x && y){
+                        d3.select("svg").append("text")
+                            .attr("x",x)
+                            .attr("y",y)
+                            .attr("class","node-label")
+                            .text(el.getAttribute("label"))
+                    }
                 }
             });
 
@@ -79,18 +83,20 @@ $(document).ready(function(){
                 var historicalMarking = el.getAttribute("marking");
                 var x = (parseInt(el.getAttribute("x1")) + parseInt(el.getAttribute("x2")))/2 + 10;
                 var y = (parseInt(el.getAttribute("y1")) + parseInt(el.getAttribute("y2")))/2 + 10;
-                d3.select("svg").append("text")
-                    .attr("x",x)
-                    .attr("y",y)
-                    .attr("class","link-label")
-                    .text(historicalMarking)
+                if(x && y && historicalMarking){
+                    d3.select("svg").append("text")
+                        .attr("x",x)
+                        .attr("y",y)
+                        .attr("class","link-label")
+                        .text(historicalMarking)
+                }
             });
 
             //Now that everything is loaded, we can bind buttons
-            $(".node").hide();
-            $(".link").hide();
-            $(".node-label").hide();
-            $(".link-label").hide();
+            // $(".node").hide();
+            // $(".link").hide();
+            // $(".node-label").hide();
+            // $(".link-label").hide();
 
             //Attach event handlers
             $("#show-network").click(function(){

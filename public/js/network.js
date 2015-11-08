@@ -105,7 +105,8 @@ function drawNetwork(synapses,callback) {
             marking: synapses[i].historicalMarking,
             source: nodeMappings[synapses[i].from],
             target: nodeMappings[synapses[i].to],
-            weight: synapses[i].weight
+            weight: synapses[i].weight,
+            type: synapses[i].type
         }
         links.push(newLink);
     }
@@ -198,9 +199,12 @@ function updateNetworkStates(synapses){
     $(".link").each(function(index,el){
         var marking = el.getAttribute("marking");
         if(neuronMap[marking]){
-            $(el).addClass("active-link");
+            var oldClasses = $(el).attr("class");
+            $(el).attr("class",oldClasses + " active-link");
         } else {
-            $(el).removeClass("active-link");
+            var oldClasses = $(el).attr("class");
+            oldClasses.replace(" active-link","");
+            $(el).attr("class",oldClasses);
         }
     })
 }

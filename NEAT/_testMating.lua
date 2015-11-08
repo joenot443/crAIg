@@ -115,7 +115,4 @@ print("Starting mating season...")
 
 local child = mate(genome1,genome2)
 
-print("New baby: ")
-print(pretty(child))
-
 print("Test completed.")
