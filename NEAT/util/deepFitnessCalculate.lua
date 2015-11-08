@@ -4,20 +4,21 @@ function deepFitnessCalculate(species)
 	print("Calculating fitness for ",#species.genomes," genomes")
 	for i=1,#species.genomes do
 		local genome = species.genomes[i]
-		genome.fitness = calculateFitness(genome)
-		print("\t\tFitness calculated: ",genome.fitness)
+		print("\t\tStarting calculation for genome with: " , #genome.synapses);
+		print(pretty(genome.synapses));
+		genome.fitness = 30;		-- print("\t\tFitness calculated: ",genome.fitness)
 	end
 
 	--Set the representative for the species
 	setCandidate(species)
-
+	return
 end
 
 function calculateFitness(genome)
-	local tiles = initialState();
 	local lastX;
 	local running = true;
 	local framesSinceProgress = 0;
+	local tiles = initialState();
 
 	while (running) do
 		local outputs = chooseOutputs(genome.synapses, tiles)
@@ -35,7 +36,7 @@ function calculateFitness(genome)
 		end
 
 		tiles = runFrame(outputs);
-	end
+	end	
 
 
 	return fitness(getMarioXPos()) 

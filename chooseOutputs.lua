@@ -18,13 +18,15 @@ require('NEAT/models/connection')
 --Solve the node recursively
 function solveNode(node)
 	for k, conn in pairs(node.connections) do
+		--Recursively solve the node
+		if (conn.to.litTile and conn.litTile) then return end;
+		if (conn.to.litGoomba and conn.litGoomba) then return end;
 		--Only try to light the node if it's not lit already
 		if (conn.type == 1 and node.litTile) then conn.to.litTile = true end;
 		if (conn.type == 2 and node.litGoomba) then conn.to.litGoomba = true end;
-
-		--Recursively solve the node
-		solveNode(conn.to);
+		return solveNode(conn.to);
 	end
+
 end
 
 --Select which buttons to press based off the synapses
@@ -38,6 +40,7 @@ function chooseOutputs(synapses, tiles)
 		node.ID = neur.label;
 		node.type = neur.type;
 		nodes[node.ID] = node;
+
 	end;
 
 	--Iterate through all the synapses in the species

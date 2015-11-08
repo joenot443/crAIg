@@ -22,9 +22,8 @@ local JSON = require('JSON');
 --Game frame count
 local ticker = 0;
 
-
 --Save and persist our initial state
-local originalState = savestate.object();
+local originalState = savestate.create();
 savestate.save(originalState);
 savestate.persist(originalState);
 
@@ -61,12 +60,16 @@ function runFrame(outputs)
 	local data = {};
 	data.tiles = tiles;
 	
-	if (LOG_OUTPUT) then
-		local file = io.open('output.json', 'w+');
+	if (ticker == 30) then
+		local file = io.open('graph.json', 'w+');
 		io.output(file);
 		io.write(JSON:encode_pretty(data));
 		io.close();
-		ticker = 0;
+		local file = io.open('network.json', 'w+');
+		io.output(file);
+		io.write(JSON:encode_pretty(data));
+		io.close();
+		ticker = 0;o
 	end
 
 	--Press joy buttons
