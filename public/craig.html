@@ -17,9 +17,64 @@
             fill: #fff;
         }
 
+        .input-node {
+            opacity:0;
+        }
+
+        .input-node.active-node {
+            opacity:0.2;
+        }
+
         .link {
             stroke: #000;
             stroke-width: 2px;
+            opacity: 0.2;
+        }
+
+        .node-label {
+            font-family: sans-serif;
+        }
+
+        .link-label {
+            font-family: sans-serif;
+        }
+
+        .active-link {
+            stroke: #ff0000;
+            stroke-dasharray: 200;
+            animation: dash 3s linear infinite;
+            opacity: 0.4;
+        }
+
+        .active-node {
+            stroke: #ff0000 !important;
+            fill: #ff0000 !important;
+            animation: pulse 1s ease infinite;
+            transform-origin:50%;
+        }
+
+        @keyframes dash {
+            to{
+                stroke-dashoffset: -1200;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                stroke-width:1;
+                opacity:1;
+            }
+
+            50% {
+                opacity:1;
+            }
+
+            100% {
+                transform: scale(2.5);
+                stroke-width:0.25;
+                opacity:0;
+            }
         }
     </style>
 
@@ -74,5 +129,8 @@
         drawNetwork(networkJSON)
 
  </script>
+ <br/>
+ <input id="show-network" type="checkbox"/>Show Neural Network<br/>
+ <input id="show-labels" type="checkbox"/>Show Synapse/Neuron IDs<br/>
 
 </html>

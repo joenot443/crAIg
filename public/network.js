@@ -123,7 +123,7 @@ function drawNetwork(species) {
 	var link = svg.selectAll('.link')
     .data(links)
     .enter().append('line')
-    .attr('class', 'link')
+    .attr('class', 'link active-link')
     .attr("marking", function(d){
     	if(d.marking){
     		return d.marking
@@ -133,7 +133,20 @@ function drawNetwork(species) {
 	var node = svg.selectAll('.node')
     .data(nodes)
     .enter().append('circle')
-    .attr('class', 'node')
+    .attr('class', function(d){
+    	var baseClass = "node"
+    	switch(d.type){
+    		case 1:
+    			baseClass += " input-node"
+    			break;
+    		case 2:
+    		case 3:
+    			baseClass += " active-node"
+    			break;
+    	}
+
+    	return baseClass
+    })
     .attr('type', function(d){
     	return d.type
     })
@@ -142,15 +155,6 @@ function drawNetwork(species) {
     		return d.label
     	} else {
     		return;
-    	}
-    })
-    .style("fill", function(d){
-    	if(d.type==1){
-    		return "#ffffff"
-    	} else if(d.type==2){
-    		return "#000000"
-    	} else if(d.type==3){
-    		return "#00ff00"
     	}
     });
 
@@ -171,11 +175,12 @@ function drawNetwork(species) {
         $(".node").each(function(i, el){
         	var type = el.getAttribute("type");
         	if(type==3){
-        		var x = el.getAttribute("cx");
-        		var y = el.getAttribute("cy");
+        		var x = parseInt(el.getAttribute("cx")) + 10;
+        		var y = parseInt(el.getAttribute("cy")) + 10;
         		d3.select("svg").append("text")
         			.attr("x",x)
         			.attr("y",y)
+        			.attr("class","node-label")
         			.text(el.getAttribute("label"))
         	}
         });
@@ -183,12 +188,40 @@ function drawNetwork(species) {
         //Add text to lines to show historicalMarker
         $(".link").each(function(i,el){
         	var historicalMarking = el.getAttribute("marking");
-        	var x = (parseInt(el.getAttribute("x1")) + parseInt(el.getAttribute("x2")))/2;
-        	var y = (parseInt(el.getAttribute("y1")) + parseInt(el.getAttribute("y2")))/2;
+        	var x = (parseInt(el.getAttribute("x1")) + parseInt(el.getAttribute("x2")))/2 + 10;
+        	var y = (parseInt(el.getAttribute("y1")) + parseInt(el.getAttribute("y2")))/2 + 10;
     		d3.select("svg").append("text")
     			.attr("x",x)
     			.attr("y",y)
+    			.attr("class","link-label")
     			.text(historicalMarking)
+        });
+
+        //Hide everything
+        $(".node").hide();
+        $(".link").hide();
+        $(".node-label").hide();
+        $(".link-label").hide();
+
+        //Attach event handlers
+        $("#show-network").click(function(){
+            if($(this).is(":checked")){
+                $(".node").show();
+                $(".link").show();
+            } else {
+                $(".node").hide();
+                $(".link").hide();
+            }
+        });
+
+        $("#show-labels").click(function(){
+            if($(this).is(":checked")){
+                $(".node-label").show();
+                $(".link-label").show();
+            } else {
+                $(".node-label").hide();
+                $(".link-label").hide();
+            }
         })
 	});
 
