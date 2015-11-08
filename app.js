@@ -19,9 +19,9 @@ io.on('connection', function (socket) {
 	console.log("Someone connected!");
 
 	//Set up a timer to send the JSON file
-	setInterval(sendGrid, 100);
-	setInterval(sendSynapsesUpdate, 100);
-	setInterval(checkSendSynapses, 100);
+	setInterval(sendGrid, 500);
+	setInterval(sendSynapsesUpdate, 500);
+	setInterval(checkSendSynapses, 500);
 
 	var lastGenome = 0;
 	function sendGrid() {
@@ -36,10 +36,10 @@ io.on('connection', function (socket) {
 	}
 	//Check if we need to send new synapses
 	function checkSendSynapses() {
-		console.log("Checking if we need to send new synapses");
 		var fs = require('fs');
 		var synapses = JSON.parse(fs.readFileSync('network.json', 'utf8'));
 		if (synapses.genome != lastGenome) {
+			
 			console.log("Sending a new synapse for " + synapses.genome);
 			socket.emit('synapses', synapses);
 			lastGenome = synapses.genome;

@@ -8,6 +8,7 @@ function deepFitnessCalculate(species)
 		print("\t\tStarting calculation for genome with",#genome.synapses," synapses")
 		print(pretty(genome.synapses))
 		genome.fitness = calculateFitness(genome)
+		firstRun = true;
 		print("\t\tFitness calculated: ",genome.fitness)
 	end
 

@@ -20,7 +20,7 @@ local JSON = require('json');
 
 --Game frame count
 local ticker = 0;
-local firstRun = true;
+firstRun = true;
 
 --Save and persist our initial state
 local originalState = savestate.create();
@@ -66,14 +66,16 @@ function runFrame(outputs, genome)
 		io.write(JSON:encode_pretty(data));
 		io.close();
 		print(pretty(synapses));
+
+		print(firstRun);
+		
 		if (firstRun) then 
 			local file = io.open('network.json', 'w+');
 			io.output(file);
 			data =  {}
 			data['synapses'] = synapses;
-			-- data['species'] = species.id;
 			data['genome'] = genome.id;
-			io.write(JSON:encode_pretty(synapses));
+			io.write(JSON:encode_pretty(data));
 			io.close();
 			firstRun = false;
 		end
