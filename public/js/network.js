@@ -59,7 +59,7 @@ function drawNetwork(synapses,callback) {
         fixed: true,
         type: 2
     });
-    nodeMappings[172] = 171;
+    nodeMappings[174] = 171;
 
     //173
     nodes.push({
@@ -68,7 +68,7 @@ function drawNetwork(synapses,callback) {
         fixed: true,
         type: 2
     });
-    nodeMappings[173] = 172;
+    nodeMappings[175] = 172;
 
     //Find the other neurons by traversing through synapses
     for(var i=0;i<synapses.length;i++){

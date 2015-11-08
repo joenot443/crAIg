@@ -1,38 +1,3 @@
-var testNetwork = {
-    synapses: [
-        {
-            historicalMarking: 23,
-            to: 170,
-            from: 25,
-            weight: 50
-        },
-        {
-            historicalMarking: 30,
-            to: 171,
-            from: 120,
-            weight: 10
-        },
-        {
-            historicalMarking: 45,
-            to: 180,
-            from: 124,
-            weight: 10
-        },
-        {
-            historicalMarking: 46,
-            to:172,
-            from: 180,
-            weight: 5
-        },
-        {
-            historicalMarking: 50,
-            to: 180,
-            from: 55
-        }
-    ]
-}
-
-
 //Global config
 var graphWidth = 750;
 var graphHeight = 750;
@@ -62,6 +27,24 @@ $(document).ready(function(){
 
         drawNetwork(data.synapses, function(){
             console.log("Drew Network");
+
+            d3.select("svg").append("text")
+                .attr("x",760)
+                .attr("y",105)
+                .text("Left");
+            d3.select("svg").append("text")
+                .attr("x",760)
+                .attr("y",155)
+                .text("Right");
+            d3.select("svg").append("text")
+                .attr("x",760)
+                .attr("y",205)
+                .text("A");
+            d3.select("svg").append("text")
+                .attr("x",760)
+                .attr("y",255)
+                .text("B");
+
             //Add text to nodes that aren't input/output
             $(".node").each(function(i, el){
                 var type = el.getAttribute("type");
@@ -92,23 +75,6 @@ $(document).ready(function(){
                 }
             });
 
-            //Now that everything is loaded, we can bind buttons
-            // $(".node").hide();
-            // $(".link").hide();
-            // $(".node-label").hide();
-            // $(".link-label").hide();
-
-            //Attach event handlers
-            $("#show-network").click(function(){
-                if($(this).is(":checked")){
-                    $(".node").show();
-                    $(".link").show();
-                } else {
-                    $(".node").hide();
-                    $(".link").hide();
-                }
-            });
-
             $("#watch-socket").click(function(){
                 //Start watching socket
                 if(!watchingSocket){
@@ -121,16 +87,6 @@ $(document).ready(function(){
                     });
                     
                     watchingSocket = true;
-                }
-            });
-
-            $("#show-labels").click(function(){
-                if($(this).is(":checked")){
-                    $(".node-label").show();
-                    $(".link-label").show();
-                } else {
-                    $(".node-label").hide();
-                    $(".link-label").hide();
                 }
             });
         });

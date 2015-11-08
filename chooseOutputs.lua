@@ -1,7 +1,7 @@
-local A 	= 170;
-local B 	= 171;
-local LEFT 	= 172;
-local RIGHT	= 173;
+local A 	= 174;
+local B 	= 175;
+local LEFT 	= 170;
+local RIGHT	= 171;
 
 local AIR = 0
 local TILE = 1
