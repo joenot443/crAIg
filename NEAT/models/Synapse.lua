@@ -2,6 +2,10 @@ Synapse = {}
 
 currentSynapse = 0
 
+local AIR = 0
+local TILE = 1
+local GOOMBA = 2
+
 function Synapse:new()
 	currentSynapse = currentSynapse + 1
 
@@ -20,6 +24,7 @@ function Synapse:new()
 	-- Whether the synapse is being expressed or not
 	synapse.enabled = true
 
+	synapse.type = TILE;
 	return synapse
 end
 

@@ -1,66 +1,65 @@
 emu.speedmode("normal");
 
-local MarioXAddress = 0x0086;
-local Enemy1XAddress = 0x0087;
-local Enemy2XAddress = 0x0088;
-local MarioX;
-local Enemy1X;
-local Enemy2X;
+
+--Constants
+local MARIOX_ADDR = 0x0086;
+local LOG_OUTPUT = false;
+
+--Joypad buttons
 
 local joyRight 	= {right=true};
 local joyLeft 	= {left=true};
 local joyUp 	= {up=true};
 local joyDown 	= {down=true};
-local joyA 		= {a=true};
-local joyB		= {b=true};
-
-local function pressRight()
-	joypad.set(1, joyRight);
-end;
-local function pressLeft()
-	joypad.set(1, joyLeft);
-end;
-local function pressUp()
-	joypad.set(1, joyUp);
-end;
-local function pressDown()
-	joypad.set(1, joyDown);
-end;
-local function pressA()
-	joypad.set(1, joyA);
-end;
-local function pressB()
-	joypad.set(1, joyB);
-end;
+local joyA 		= {A=true};
+local joyB		= {B=true};
 
 --Require files
 --local FileOut = require('FileOut');
 local ReadMemory = require('ReadMemory');
 local JSON = require('JSON');
 
---Game framt count
+--Game frame count
 local ticker = 0;
 
+--Save and persist our initial state
+local originalState = savestate.object();
+savestate.save(originalState);
+savestate.persist(originalState);
 
+--Returns the initial boardstate
+function initialState() 
+	--First load the save state
+	savestate.load(originalState);
 
+	emu.frameadvance();
+	local tiles = readScreen();
+	return tiles;
+end
 
--- Game loop
-while (true) do
+function readScreen() 
+	local enemySprites = ReadMemory.readEnemySprites();
+	local screen = ReadMemory.readScreen();
+	local mario = ReadMemory.readMario();
+	local tiles = ReadMemory.readTiles();
+
+	return tiles;
+end
+
+function runFrame(outputs) 
+
 	ticker = ticker + 1;
 
-	--Every 120 frames we'll output a new file
-	if (ticker == 30) then
-		print("writing file");
+	--Every 30 frames we'll output a new file
+	local enemySprites = ReadMemory.readEnemySprites();
+	local screen = ReadMemory.readScreen();
+	local mario = ReadMemory.readMario();
+	local tiles = ReadMemory.readTiles();
 
-		local enemySprites = ReadMemory.readEnemySprites();
-		local screen = ReadMemory.readScreen();
-		local mario = ReadMemory.readMario();
-		local tiles = ReadMemory.readTiles();
-
-		local data = {};
-		
-		data["tiles"] = tiles;
-
+	local data = {};
+	data.tiles = tiles;
+	
+	if (LOG_OUTPUT) then
 		local file = io.open('output.json', 'w+');
 		io.output(file);
 		io.write(JSON:encode_pretty(data));
@@ -68,5 +67,16 @@ while (true) do
 		ticker = 0;
 	end
 
+	--Press joy buttons
+	if outputs.a then 	print("jumping");
+		joypad.set(1, joyA); end;
+	if outputs.b then joypad.set(1, joyB) end;	
+	if outputs.left then joypad.set(1, joyLeft) end;	
+	if outputs.right then joypad.set(1, joyRight) end;
+
 	emu.frameadvance();
+
+
+
+	return tiles;
 end;

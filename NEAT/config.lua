@@ -31,7 +31,12 @@ COMPATIBILITY_THRESHOLD = 5.0
 
 --I/O
 OUTPUTS = {
-	"D"
+	"L",   		--170
+	"R",		--171
+	"D",		--172
+	"U",		--173
+	"A",		--174
+	"B",		--175
 }
-INPUT_COUNT = 3
+INPUT_COUNT = 169
 OUTPUT_COUNT = #OUTPUTS
