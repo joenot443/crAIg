@@ -9,6 +9,7 @@ local MUTATE_MODIFY_SYNAPSE = 3
 
 --Create mutations on the genome 
 function mutateGenome(genome)
+	print("MAX NEURON",genome.maxNeuron)
 	--Modify the mutation rates?
 
 	--Determine if we should re-weigh synapses
@@ -84,6 +85,7 @@ function mutateAddNeuron(genome)
 	end
 
 	--Disable the old synapse
+	splitSynapse.gotsplit = true
 	splitSynapse.enabled = false
 
 	--Create a new neuron
@@ -97,12 +99,14 @@ function mutateAddNeuron(genome)
 	firstSynapse.enabled = true
 	firstSynapse.createdby = "addneuron1"
 
+
 	local secondSynapse = Synapse:new()
 	secondSynapse.from = genome.maxNeuron
 	secondSynapse.to = splitSynapse.to
 	secondSynapse.weight = splitSynapse.weight
 	secondSynapse.enabled = true
 	secondSynapse.createdby = "addneuron2"
+	secondSynapse.oldSynapse = splitSynapse
 
 	print(firstSynapse.from,">",firstSynapse.to)
 	print(secondSynapse.from,">",secondSynapse.to)

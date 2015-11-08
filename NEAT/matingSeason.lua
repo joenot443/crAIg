@@ -107,6 +107,18 @@ function mate(momGenome, dadGenome)
 	end
 
 	--Post-coitus
+	--Calculate the child's max neuron
+	for s=1,#child.synapses do 
+		if(child.synapses[s].to > child.maxNeuron) then
+			print("Updated child's max neuron")
+			child.maxNeuron = child.synapses[s].to
+		end
+
+		if(child.synapses[s].from > child.maxNeuron) then
+			print("Updated child's max neuron")
+			child.maxNeuron = child.synapses[s].from
+		end
+	end
 
 	return child
 end

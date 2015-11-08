@@ -1,3 +1,6 @@
+--Children per gen
+BABIES_PER_GENERATION = 40
+
 --Probabilities of different mutations occuring
 SYNAPSE_WEIGHT_MUTATION_CHANCE = 0.8
 ADD_SYNAPSE_MUTATION_CHANCE = 1.0
