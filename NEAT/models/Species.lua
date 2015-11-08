@@ -1,3 +1,5 @@
+speciesCounter = 0;
+
 Species = {}
 
 function Species:new()
@@ -21,5 +23,10 @@ function Species:new()
 	-- Which genome are we using as a metric for which genomes are part of this species or not
 	species.candidateGenome = {}
 
+	-- Identifier for the species
+	speciesCounter = speciesCounter + 1;
+
+	species.id = speciesCounter;
+	
 	return species
 end

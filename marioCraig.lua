@@ -1,6 +1,5 @@
 emu.speedmode("normal");
 
-
 --Constants
 local MARIOX_ADDR = 0x0086;
 local LOG_OUTPUT = true;
@@ -47,7 +46,7 @@ function readScreen()
 	return tiles;
 end
 
-function runFrame(outputs) 
+function runFrame(outputs, genome) 
 
 
 	ticker = ticker + 1;
@@ -70,6 +69,10 @@ function runFrame(outputs)
 		if (firstRun) then 
 			local file = io.open('network.json', 'w+');
 			io.output(file);
+			data =  {}
+			data['synapses'] = synapses;
+			-- data['species'] = species.id;
+			data['genome'] = genome.id;
 			io.write(JSON:encode_pretty(synapses));
 			io.close();
 			firstRun = false;

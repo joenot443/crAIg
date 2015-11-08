@@ -1,6 +1,8 @@
 require("NEAT/config")
 require("NEAT/models/Synapse")
 
+genomeCounter = 0;
+
 Genome = {}
 
 function Genome:new()
@@ -21,6 +23,10 @@ function Genome:new()
 
 	--Calculated using adjusted fitness function
 	genome.adjustedFitness = 0
+
+	genomeCounter = genomeCounter + 1;
+	--ID for the genome
+	genome.id = genomeCounter;
 
 	return genome
 end

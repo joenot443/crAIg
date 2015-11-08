@@ -38,7 +38,7 @@ function calculateFitness(genome)
 			running = false;
 		end
 
-		tiles = runFrame(outputs);
+		tiles = runFrame(outputs, genome);
 	end	
 
 
