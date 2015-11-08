@@ -1,127 +1,44 @@
 {
-  "genome": 29,
+  "genome": 7,
   "synapses": [ {
-    "enabled": true,
+    "enabled": false,
     "from": 101,
     "historicalMarking": 1,
     "lit": false,
-    "to": 174,
-    "type": 2,
-    "weight": 1.31652882473
-  }, {
-    "enabled": true,
-    "from": 101,
-    "historicalMarking": 41,
-    "lit": false,
-    "to": 174,
-    "type": 2,
-    "weight": 0.973451948607
+    "to": 171,
+    "type": 1,
+    "weight": 0.473842585528
   }, {
     "enabled": true,
     "from": 113,
-    "historicalMarking": 57,
+    "historicalMarking": 10,
     "lit": false,
-    "to": 174,
-    "type": 2,
-    "weight": 0.922330393384
+    "to": 170,
+    "type": 1,
+    "weight": 0.801916562395
   }, {
     "enabled": true,
-    "from": 136,
-    "historicalMarking": 56,
+    "from": 99,
+    "historicalMarking": 11,
+    "lit": false,
+    "to": 170,
+    "type": 2,
+    "weight": 0.799288918729
+  }, {
+    "enabled": true,
+    "from": 99,
+    "historicalMarking": 19,
     "lit": false,
     "to": 171,
     "type": 2,
-    "weight": 0.309573656423
-  }, {
-    "enabled": false,
-    "from": 139,
-    "historicalMarking": 11,
-    "lit": false,
-    "to": 174,
-    "type": 1,
-    "weight": 1.35464033937
-  }, {
-    "enabled": false,
-    "from": 177,
-    "gotsplit": true,
-    "historicalMarking": 19,
-    "lit": false,
-    "to": 174,
-    "type": 1,
-    "weight": 0.475807977538
+    "weight": 0.637775811029
   }, {
     "enabled": true,
-    "from": 100,
+    "from": 124,
     "historicalMarking": 20,
     "lit": false,
-    "to": 174,
-    "type": 2,
-    "weight": 0.258894619587
-  }, {
-    "enabled": false,
-    "from": 99,
-    "gotsplit": true,
-    "historicalMarking": 21,
-    "lit": false,
-    "to": 174,
-    "type": 2,
-    "weight": 0.542817468795
-  }, {
-    "enabled": true,
-    "from": 113,
-    "historicalMarking": 42,
-    "lit": false,
-    "to": 177,
+    "to": 171,
     "type": 1,
-    "weight": 0.964659566027
-  }, {
-    "enabled": false,
-    "from": 138,
-    "historicalMarking": 12,
-    "lit": false,
-    "to": 174,
-    "type": 1,
-    "weight": 0.950315866573
-  }, {
-    "enabled": false,
-    "from": 176,
-    "gotsplit": true,
-    "historicalMarking": 15,
-    "lit": false,
-    "to": 174,
-    "type": 2,
-    "weight": 0.731720938749
-  }, {
-    "enabled": true,
-    "from": 97,
-    "historicalMarking": 91,
-    "lit": false,
-    "to": 174,
-    "type": 2,
-    "weight": 0.423444318979
-  }, {
-    "enabled": true,
-    "from": 126,
-    "historicalMarking": 92,
-    "lit": false,
-    "to": 177,
-    "type": 1,
-    "weight": 0.07629627369
-  }, {
-    "enabled": true,
-    "from": 177,
-    "historicalMarking": 93,
-    "lit": false,
-    "to": 178,
-    "type": 1,
-    "weight": 1
-  }, {
-    "enabled": true,
-    "from": 178,
-    "historicalMarking": 94,
-    "lit": false,
-    "to": 174,
-    "type": 2,
-    "weight": 0.93851741081
+    "weight": 0.203216650899
   } ]
 }

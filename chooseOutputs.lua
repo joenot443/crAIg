@@ -113,7 +113,9 @@ function chooseOutputs(synapses, tiles)
 	outputs.a 		= nodeA.litTile or nodeA.litGoomba;
 	outputs.b 		= nodeB.litTile or nodeB.litGoomba;
 	outputs.right 	= nodeRight.litTile or nodeRight.litGoomba;
-	outputs.left 	= nodeLeft.litTile or nodeLeft.litGoomba;
+	-- outputs.left 	= nodeLeft.litTile or nodeLeft.litGoomba;
+	outputs.left = false
+
 	return outputs;
 	-- print(pretty(nodes));
 	--Check if we've created a Node from the IDs yet

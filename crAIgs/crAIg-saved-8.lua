@@ -32,6 +32,6 @@ local obj1 = {
 			["extinctionCounter"] = 0;
 		};
 	};
-	["generation"] = 5;
+	["generation"] = 8;
 }
 return obj1

@@ -88,11 +88,14 @@ function runFrame(outputs, genome)
 		ticker = 0;
 	end
 
+	local realOut = {}
 	--Press joy buttons
-	if outputs.a then joypad.set(1, joyA); end;
-	if outputs.b then joypad.set(1, joyB) end;	
-	if outputs.left then joypad.set(1, joyLeft) end;	
-	if outputs.right then joypad.set(1, joyRight) end;
+	if outputs.a then realOut.A = true else realOut.A = false end;
+	if outputs.b then realOut.B = true else realOut.B = false end;	
+	if outputs.left then realOut.left = true else realOut.left = false end;	
+	if outputs.right then realOut.right = true else realOut.right = false end;
+
+	joypad.set(1,realOut)
 
 	emu.frameadvance();
 

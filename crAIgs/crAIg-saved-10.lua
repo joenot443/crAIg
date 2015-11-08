@@ -8,10 +8,10 @@ multiRefObjects[1]["maxNeuron"] = 175;
 multiRefObjects[1]["synapses"] = {
 	[1] = {
 		["historicalMarking"] = 1;
-		["type"] = 1;
+		["type"] = 2;
 		["to"] = 170;
-		["from"] = 124;
-		["weight"] = 0.824365977966;
+		["from"] = 137;
+		["weight"] = 0.125278481399;
 		["enabled"] = true;
 		["lit"] = false;
 	};
@@ -32,6 +32,6 @@ local obj1 = {
 			["extinctionCounter"] = 0;
 		};
 	};
-	["generation"] = 5;
+	["generation"] = 10;
 }
 return obj1
