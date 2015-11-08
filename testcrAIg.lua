@@ -128,7 +128,7 @@ local synapse10 = Synapse:new()
 local synapse10 = Synapse:new()
 	synapse10.historicalMarking = 2
 	synapse10.from = 112
-	synapse10.to = 169
+	synapse10.to = 176
 	table.insert(genome4.synapses, synapse10)
 local synapse10 = Synapse:new()
 	synapse10.historicalMarking = 3
