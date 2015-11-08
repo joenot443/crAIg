@@ -51,6 +51,31 @@ $(document).ready(function(){
 
     //Draw network
     drawNetwork(testNetwork, function(){
+        //Add text to nodes that aren't input/output
+        $(".node").each(function(i, el){
+            var type = el.getAttribute("type");
+            if(type==3){
+                var x = parseInt(el.getAttribute("cx")) + 10;
+                var y = parseInt(el.getAttribute("cy")) + 10;
+                d3.select("svg").append("text")
+                    .attr("x",x)
+                    .attr("y",y)
+                    .attr("class","node-label")
+                    .text(el.getAttribute("label"))
+            }
+        });
+
+        //Add text to lines to show historicalMarker
+        $(".link").each(function(i,el){
+            var historicalMarking = el.getAttribute("marking");
+            var x = (parseInt(el.getAttribute("x1")) + parseInt(el.getAttribute("x2")))/2 + 10;
+            var y = (parseInt(el.getAttribute("y1")) + parseInt(el.getAttribute("y2")))/2 + 10;
+            d3.select("svg").append("text")
+                .attr("x",x)
+                .attr("y",y)
+                .attr("class","link-label")
+                .text(historicalMarking)
+        });
 
         //Now that everything is loaded, we can bind buttons
         $(".node").hide();
@@ -88,32 +113,6 @@ $(document).ready(function(){
                 $(".node-label").hide();
                 $(".link-label").hide();
             }
-        });
-
-        //Add text to nodes that aren't input/output
-        $(".node").each(function(i, el){
-            var type = el.getAttribute("type");
-            if(type==3){
-                var x = parseInt(el.getAttribute("cx")) + 10;
-                var y = parseInt(el.getAttribute("cy")) + 10;
-                d3.select("svg").append("text")
-                    .attr("x",x)
-                    .attr("y",y)
-                    .attr("class","node-label")
-                    .text(el.getAttribute("label"))
-            }
-        });
-
-        //Add text to lines to show historicalMarker
-        $(".link").each(function(i,el){
-            var historicalMarking = el.getAttribute("marking");
-            var x = (parseInt(el.getAttribute("x1")) + parseInt(el.getAttribute("x2")))/2 + 10;
-            var y = (parseInt(el.getAttribute("y1")) + parseInt(el.getAttribute("y2")))/2 + 10;
-            d3.select("svg").append("text")
-                .attr("x",x)
-                .attr("y",y)
-                .attr("class","link-label")
-                .text(historicalMarking)
         });
     });
 });
