@@ -34,6 +34,7 @@ mutateAddSynapse(randomGenome)
 table.insert(seedSpecies.genomes,randomGenome)
 table.insert(crAIg.species,seedSpecies)
 
+--crAIg = persistence.load("crAIgs/crAIg-saved-13.lua")
 
 local numGenerations = 50
 for i=1,numGenerations do

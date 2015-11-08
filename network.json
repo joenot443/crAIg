@@ -1,251 +1,127 @@
 {
-<<<<<<< HEAD
-  "genome": 16,
-  "synapses": [ {
-    "enabled": false,
-    "from": 170,
-    "gotsplit": true,
-    "historicalMarking": 1,
-    "lit": false,
-    "to": 172,
-    "type": 2,
-    "weight": 0.570299386578
-  }, {
-    "enabled": false,
-    "from": 70,
-    "gotsplit": true,
-    "historicalMarking": 24,
-    "lit": false,
-    "to": 173,
-    "type": 2,
-    "weight": 0.747025971252
-  }, {
-    "enabled": true,
-    "from": 176,
-    "historicalMarking": 26,
-    "lit": false,
-    "to": 173,
-    "type": 2,
-    "weight": 0.683483382672
-  }, {
-    "enabled": true,
-    "from": 130,
-    "historicalMarking": 27,
-    "lit": false,
-    "to": 176,
-    "type": 1,
-    "weight": 0.0527573473312
-  }, {
-    "enabled": true,
-    "from": 162,
-    "historicalMarking": 28,
-    "lit": false,
-    "to": 176,
-    "type": 2,
-    "weight": 0.473632007813
-  }, {
-    "enabled": true,
-    "from": 129,
-    "historicalMarking": 5,
-=======
-  "genome": 63,
+  "genome": 29,
   "synapses": [ {
     "enabled": true,
-    "from": 144,
+    "from": 101,
     "historicalMarking": 1,
-    "lit": false,
-    "to": 173,
-    "type": 1,
-    "weight": 0.651789910581
-  }, {
-    "enabled": true,
-    "from": 103,
-    "historicalMarking": 3,
-    "lit": false,
-    "to": 172,
-    "type": 1,
-    "weight": 0.683782464064
-  }, {
-    "enabled": false,
-    "from": 93,
-    "historicalMarking": 4,
-    "lit": false,
-    "to": 172,
-    "type": 1,
-    "weight": 0.392226935636
-  }, {
-    "enabled": true,
-    "from": 144,
-    "historicalMarking": 73,
->>>>>>> c30f4faad97c88e1dcb75b168c388d6455fa702d
-    "lit": false,
-    "to": 172,
-    "type": 1,
-<<<<<<< HEAD
-    "weight": 1.37380596332
-  }, {
-    "enabled": true,
-    "from": 174,
-    "historicalMarking": 22,
-=======
-    "weight": 0.519150364696
-  }, {
-    "enabled": true,
-    "from": 93,
-    "historicalMarking": 74,
->>>>>>> c30f4faad97c88e1dcb75b168c388d6455fa702d
-    "lit": false,
-    "to": 170,
-    "type": 2,
-    "weight": 0.901327555162
-  }, {
-    "enabled": true,
-    "from": 84,
-    "historicalMarking": 21,
-    "lit": false,
-    "to": 170,
-    "type": 1,
-<<<<<<< HEAD
-    "weight": 0.887304300058
-  }, {
-    "enabled": true,
-    "from": 162,
-    "historicalMarking": 6,
-=======
-    "weight": 1.08849757378
-  }, {
-    "enabled": true,
-    "from": 92,
-    "historicalMarking": 16,
->>>>>>> c30f4faad97c88e1dcb75b168c388d6455fa702d
-    "lit": false,
-    "to": 171,
-    "type": 2,
-<<<<<<< HEAD
-    "weight": 0.202676473281
-  }, {
-    "enabled": true,
-    "from": 57,
-    "historicalMarking": 23,
-    "lit": false,
-    "to": 175,
-    "type": 1,
-    "weight": 0.484423352763
-  }, {
-    "enabled": true,
-    "from": 54,
-    "historicalMarking": 7,
-    "lit": false,
-    "to": 172,
-    "type": 2,
-    "weight": 1.02083193457
-  }, {
-    "enabled": true,
-    "from": 115,
-    "historicalMarking": 4,
     "lit": false,
     "to": 174,
     "type": 2,
-    "weight": 0.967445905942
+    "weight": 1.31652882473
   }, {
     "enabled": true,
-    "from": 165,
-    "historicalMarking": 49,
-    "lit": false,
-    "to": 176,
-    "type": 1,
-    "weight": 1.04272591327
-  }, {
-    "enabled": false,
-    "from": 84,
-    "gotsplit": true,
-    "historicalMarking": 48,
-    "lit": false,
-    "to": 176,
-    "type": 1,
-    "weight": 0.367082735679
-  }, {
-    "enabled": true,
-    "from": 120,
-    "historicalMarking": 50,
-    "lit": false,
-    "to": 176,
-    "type": 1,
-    "weight": 0.445326090274
-  }, {
-    "enabled": true,
-    "from": 72,
-    "historicalMarking": 51,
-    "lit": false,
-    "to": 171,
-    "type": 1,
-    "weight": 0.718527787103
-=======
-    "weight": 0.987701040681
-  }, {
-    "enabled": true,
-    "from": 68,
-    "historicalMarking": 9,
+    "from": 101,
+    "historicalMarking": 41,
     "lit": false,
     "to": 174,
     "type": 2,
-    "weight": 1.58052308725
+    "weight": 0.973451948607
   }, {
     "enabled": true,
     "from": 113,
-    "historicalMarking": 173,
+    "historicalMarking": 57,
     "lit": false,
-    "to": 170,
+    "to": 174,
     "type": 2,
-    "weight": 0.862147892697
+    "weight": 0.922330393384
   }, {
     "enabled": true,
-    "from": 71,
-    "historicalMarking": 72,
+    "from": 136,
+    "historicalMarking": 56,
+    "lit": false,
+    "to": 171,
+    "type": 2,
+    "weight": 0.309573656423
+  }, {
+    "enabled": false,
+    "from": 139,
+    "historicalMarking": 11,
     "lit": false,
     "to": 174,
     "type": 1,
-    "weight": 0.543238624226
+    "weight": 1.35464033937
   }, {
-    "enabled": true,
-    "from": 79,
-    "historicalMarking": 174,
+    "enabled": false,
+    "from": 177,
+    "gotsplit": true,
+    "historicalMarking": 19,
     "lit": false,
-    "to": 170,
+    "to": 174,
     "type": 1,
-    "weight": 0.687301248207
+    "weight": 0.475807977538
   }, {
     "enabled": true,
-    "from": 93,
-    "historicalMarking": 17,
+    "from": 100,
+    "historicalMarking": 20,
     "lit": false,
-    "to": 173,
+    "to": 174,
     "type": 2,
-    "weight": 0.856859035005
+    "weight": 0.258894619587
+  }, {
+    "enabled": false,
+    "from": 99,
+    "gotsplit": true,
+    "historicalMarking": 21,
+    "lit": false,
+    "to": 174,
+    "type": 2,
+    "weight": 0.542817468795
   }, {
     "enabled": true,
+    "from": 113,
+    "historicalMarking": 42,
+    "lit": false,
+    "to": 177,
+    "type": 1,
+    "weight": 0.964659566027
+  }, {
+    "enabled": false,
+    "from": 138,
+    "historicalMarking": 12,
+    "lit": false,
+    "to": 174,
+    "type": 1,
+    "weight": 0.950315866573
+  }, {
+    "enabled": false,
     "from": 176,
-    "historicalMarking": 75,
+    "gotsplit": true,
+    "historicalMarking": 15,
     "lit": false,
-    "to": 172,
+    "to": 174,
     "type": 2,
-    "weight": 0.940730002747
-  }, {
-    "enabled": true,
-    "from": 152,
-    "historicalMarking": 197,
-    "lit": false,
-    "to": 175,
-    "type": 1,
-    "weight": 0.665059358501
+    "weight": 0.731720938749
   }, {
     "enabled": true,
     "from": 97,
-    "historicalMarking": 198,
+    "historicalMarking": 91,
     "lit": false,
     "to": 174,
+    "type": 2,
+    "weight": 0.423444318979
+  }, {
+    "enabled": true,
+    "from": 126,
+    "historicalMarking": 92,
+    "lit": false,
+    "to": 177,
     "type": 1,
-    "weight": 0.940153202918
->>>>>>> c30f4faad97c88e1dcb75b168c388d6455fa702d
+    "weight": 0.07629627369
+  }, {
+    "enabled": true,
+    "from": 177,
+    "historicalMarking": 93,
+    "lit": false,
+    "to": 178,
+    "type": 1,
+    "weight": 1
+  }, {
+    "enabled": true,
+    "from": 178,
+    "historicalMarking": 94,
+    "lit": false,
+    "to": 174,
+    "type": 2,
+    "weight": 0.93851741081
   } ]
 }

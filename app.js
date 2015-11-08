@@ -37,6 +37,7 @@ io.on('connection', function (socket) {
 	//Check if we need to send new synapses
 	function checkSendSynapses() {
 		var fs = require('fs');
+		try{
 		var synapses = JSON.parse(fs.readFileSync('network.json', 'utf8'));
 		if (synapses.genome != lastGenome) {
 			
@@ -44,6 +45,9 @@ io.on('connection', function (socket) {
 			socket.emit('synapses', synapses);
 			lastGenome = synapses.genome;
 		};
+	}	catch(e){
+
+	}
 
 	}
 

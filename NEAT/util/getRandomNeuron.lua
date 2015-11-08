@@ -1,5 +1,6 @@
 --If allowInput, it can return an input neuron
 function getRandomNeuron(neurons, allowInput, previousLabel)
+	print("# neurons: ",#neurons)
 	local startValue = 50
 
 	if not allowInput then
@@ -15,14 +16,19 @@ function getRandomNeuron(neurons, allowInput, previousLabel)
 	local neuronNumber = math.random(startValue, neuronCount)
 
 	if neuronNumber < 169 then
-		print("Picking internior input neuron ");
-		local neuronYNumber = math.random(3, 6)
+		local neuronYNumber = math.random(7, 10)
 		local neuronXNumber = math.random(5, 10)
 
-		local neuronNumber = neuronYNumber * 13 + neuronXNumber;
+		neuronNumber = neuronYNumber * 13 + neuronXNumber;
 	end
 
-	print("New neuron number: "..neuronNumber);
+	if neuronNumber == 172 then
+		neuronNumber = 174
+	elseif neuronNumber == 173 then
+		print("setting to right")
+		neuronNumber = 171
+	end
+
 
 	local neuron = neurons[neuronNumber]
 

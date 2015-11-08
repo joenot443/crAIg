@@ -6,6 +6,7 @@ function deepFitnessCalculate(species)
 		local genome = species.genomes[i]
 		synapses = genome.synapses;
 		print("\t\tGenome: ",genome.id)
+		print(pretty(genome))
 		genome.fitness = calculateFitness(genome)
 		firstRun = true;
 		print("\t\t\tFitness: ",genome.fitness)

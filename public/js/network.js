@@ -1,4 +1,11 @@
-function drawNetwork(synapses,callback) { 
+var nodes = []
+var nodeMappings = {};
+var links = [];
+var linkMappings = {};
+function drawNetwork(synapses,callback) {
+    nodes = [];
+    nodeMappings = {};
+    links = [];
     var width = graphWidth,
         height = graphHeight;
 
@@ -11,12 +18,6 @@ function drawNetwork(synapses,callback) {
 
     var svg = d3.select("svg")
 
-    //Create nodes
-    var nodes = [];
-
-    //Keep track of mappings
-    var nodeMappings = {}
-
     //Add input nodes
     var mapIndex = 0;
     for(var y=0;y<13;y++){
@@ -25,7 +26,8 @@ function drawNetwork(synapses,callback) {
                 x: 11 + x*25,
                 y: 11 + y*25,
                 fixed: true,
-                type: 1
+                type: 1,
+                label: mapIndex+1
             }
             nodes.push(newNode);
             nodeMappings[mapIndex+1] = mapIndex;
@@ -97,8 +99,6 @@ function drawNetwork(synapses,callback) {
         }
     }
 
-    var links = [];
-
     //Add synapses
     for(var i=0;i<synapses.length;i++){
         var newLink = {
@@ -108,6 +108,7 @@ function drawNetwork(synapses,callback) {
             weight: synapses[i].weight,
             type: synapses[i].type
         }
+        linkMappings[newLink.marking] = i;
         links.push(newLink);
     }
 
@@ -190,15 +191,20 @@ function drawNetwork(synapses,callback) {
 }
 
 function updateNetworkStates(synapses){
-    var neuronMap = {}
+    var synapseMap = {}
+    // var neuronMap = {}
 
     for(var i=0;i<synapses.length;i++){
-        neuronMap[synapses[i].historicalMarking] = synapses[i].lit;
+        synapseMap[synapses[i].historicalMarking] = synapses[i].lit;
+        // if(synapses[i].lit){
+        //     neuronMap[links[linkMappings[synapses[i].historicalMarking]].source.label] = true;
+        //     neuronMap[links[linkMappings[synapses[i].historicalMarking]].target.label] = true;
+        // }
     }
 
     $(".link").each(function(index,el){
         var marking = el.getAttribute("marking");
-        if(neuronMap[marking]){
+        if(synapseMap[marking]){
             var oldClasses = $(el).attr("class");
             $(el).attr("class",oldClasses + " active-link");
         } else {
@@ -207,4 +213,16 @@ function updateNetworkStates(synapses){
             $(el).attr("class",oldClasses);
         }
     })
+
+    // $(".node").each(function(index,el){
+    //     var label = el.getAttribute("label");
+    //     if(neuronMap[label]){
+    //         var oldClasses = $(el).attr("class");
+    //         $(el).attr("class",oldClasses + " active-node");
+    //     } else {
+    //         var oldClasses = $(el).attr("class");
+    //         oldClasses.replace(" active-node","");
+    //         $(el).attr("class",oldClasses);
+    //     }
+    // })
 }
