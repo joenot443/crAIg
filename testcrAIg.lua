@@ -112,9 +112,30 @@ genome3.maxNeuron = 4
 	-- B>E
 	table.insert(genome3.synapses, Synapse:copy(synapse4))
 
-table.insert(species.genomes,genome1)
-table.insert(species.genomes,genome2)
-table.insert(species.genomes,genome3)
+local genome4 = Genome:new()
+genome4.maxNeuron = 3
+
+local synapse10 = Synapse:new()
+	synapse10.historicalMarking = 1
+	synapse10.from = 111
+	synapse10.to = 176
+	table.insert(genome4.synapses, synapse10)
+local synapse10 = Synapse:new()
+	synapse10.historicalMarking = 2
+	synapse10.from = 112
+	synapse10.to = 169
+	table.insert(genome4.synapses, synapse10)
+local synapse10 = Synapse:new()
+	synapse10.historicalMarking = 3
+	synapse10.from = 112
+	synapse10.to = 170
+	table.insert(genome4.synapses, synapse10)
+
+
+
+-- table.insert(species.genomes,genome1)
+-- table.insert(species.genomes,genome2)
+table.insert(species.genomes,genome4)
 
 
 

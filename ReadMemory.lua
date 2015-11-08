@@ -100,12 +100,12 @@ local function readTiles()
 			print('enemyY ' .. enRelTileY);
 
 			if -6 < enRelTileY and enRelTileY < 6 and 0 < (enRelTileX + 8) and (enRelTileX + 8) < 14 then
-				tiles[enRelTileY][enRelTileX + 8] = -1
+				tiles[enRelTileY][enRelTileX + 8] = 2
 			end
 		end
 	end
 
-	tiles[1][7] = 2;
+	tiles[1][7] = 3;
 	return tiles;
 end
 

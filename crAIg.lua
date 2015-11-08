@@ -1,25 +1,29 @@
 
 package.path = package.path .. ";./?.lua"
-pretty = require "pl.pretty".dump
+-- pretty = require "pl.pretty".dump
+function pretty(str)
+	return str
+end
 math.randomseed(os.time())
 math.random()
 
 require("NEAT/newGeneration")
 require("testcrAIg")
-
+require("chooseOutputs")
+require("marioCraig")
 local crAIg = getCraig()
 
-newGeneration(crAIg)
-newGeneration(crAIg)
-newGeneration(crAIg)
-newGeneration(crAIg)
-newGeneration(crAIg)
-newGeneration(crAIg)
-newGeneration(crAIg)
 
 print(#crAIg.species," species")
+
 for i=1,#crAIg.species do
-	print(#crAIg.species[i].genomes, " genomes in species ",i)
+	local tiles = initialState();
+	while (true) do
+		print(pretty(tiles))
+		local outputs = chooseOutputs(crAIg.species[i].genomes[1].synapses, tiles)
+		tiles = runFrame(outputs);
+
+	end
 end
 
 --print(pretty(crAIg.species[1].candidateGenome))

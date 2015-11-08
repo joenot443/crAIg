@@ -14,8 +14,5 @@ function Neuron:new()
 	-- ID of the neuron
 	neuron.label = currentNeuron
 	
-	-- Type of the neuron (which set of inputs its connected to)
-	neuron.type = AIR
-
 	return neuron
 end

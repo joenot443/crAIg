@@ -1,5 +1,4 @@
 --Pretty print
-local pretty = require "pl.pretty".dump
 
 require("NEAT/util/getRandomNeuron")
 require("NEAT/util/generateNeurons")

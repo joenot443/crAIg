@@ -20,11 +20,11 @@
   </body>
 
       <script>   
-        // drawGrid();
-        // var socket = io.connect('http://localhost');
-        // socket.on('grid', function(data) {
-        //   updateGrid(data);
-        // });
+        drawGrid();
+        var socket = io.connect('http://localhost');
+        socket.on('grid', function(data) {
+          updateGrid(data);
+        });
         drawNetwork();
 
  </script>
