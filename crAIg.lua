@@ -14,9 +14,15 @@ require("NEAT/models/Species")
 require("chooseOutputs")
 require("marioCraig")
 
+require("NEAT/util/deepFitnessCalculate")
+require("persistence");
+
+
+
 local crAIg = {}
 crAIg.species = {}
 crAIg.generation = 0
+
 
 --Give crAIg a seed species
 local seedSpecies = Species:new()
@@ -32,6 +38,8 @@ table.insert(crAIg.species,seedSpecies)
 local numGenerations = 50
 for i=1,numGenerations do
 	newGeneration(crAIg)
+	local crAIgName = "crAIgs/crAIg-saved-"..crAIg.generation..".lua";
+	persistence.store(crAIgName, crAIg);
 end
 
 print("Test finished.")

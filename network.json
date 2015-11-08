@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "genome": 16,
   "synapses": [ {
     "enabled": false,
@@ -46,14 +47,53 @@
     "enabled": true,
     "from": 129,
     "historicalMarking": 5,
+=======
+  "genome": 63,
+  "synapses": [ {
+    "enabled": true,
+    "from": 144,
+    "historicalMarking": 1,
     "lit": false,
     "to": 173,
     "type": 1,
+    "weight": 0.651789910581
+  }, {
+    "enabled": true,
+    "from": 103,
+    "historicalMarking": 3,
+    "lit": false,
+    "to": 172,
+    "type": 1,
+    "weight": 0.683782464064
+  }, {
+    "enabled": false,
+    "from": 93,
+    "historicalMarking": 4,
+    "lit": false,
+    "to": 172,
+    "type": 1,
+    "weight": 0.392226935636
+  }, {
+    "enabled": true,
+    "from": 144,
+    "historicalMarking": 73,
+>>>>>>> c30f4faad97c88e1dcb75b168c388d6455fa702d
+    "lit": false,
+    "to": 172,
+    "type": 1,
+<<<<<<< HEAD
     "weight": 1.37380596332
   }, {
     "enabled": true,
     "from": 174,
     "historicalMarking": 22,
+=======
+    "weight": 0.519150364696
+  }, {
+    "enabled": true,
+    "from": 93,
+    "historicalMarking": 74,
+>>>>>>> c30f4faad97c88e1dcb75b168c388d6455fa702d
     "lit": false,
     "to": 170,
     "type": 2,
@@ -65,14 +105,23 @@
     "lit": false,
     "to": 170,
     "type": 1,
+<<<<<<< HEAD
     "weight": 0.887304300058
   }, {
     "enabled": true,
     "from": 162,
     "historicalMarking": 6,
+=======
+    "weight": 1.08849757378
+  }, {
+    "enabled": true,
+    "from": 92,
+    "historicalMarking": 16,
+>>>>>>> c30f4faad97c88e1dcb75b168c388d6455fa702d
     "lit": false,
-    "to": 172,
+    "to": 171,
     "type": 2,
+<<<<<<< HEAD
     "weight": 0.202676473281
   }, {
     "enabled": true,
@@ -131,5 +180,72 @@
     "to": 171,
     "type": 1,
     "weight": 0.718527787103
+=======
+    "weight": 0.987701040681
+  }, {
+    "enabled": true,
+    "from": 68,
+    "historicalMarking": 9,
+    "lit": false,
+    "to": 174,
+    "type": 2,
+    "weight": 1.58052308725
+  }, {
+    "enabled": true,
+    "from": 113,
+    "historicalMarking": 173,
+    "lit": false,
+    "to": 170,
+    "type": 2,
+    "weight": 0.862147892697
+  }, {
+    "enabled": true,
+    "from": 71,
+    "historicalMarking": 72,
+    "lit": false,
+    "to": 174,
+    "type": 1,
+    "weight": 0.543238624226
+  }, {
+    "enabled": true,
+    "from": 79,
+    "historicalMarking": 174,
+    "lit": false,
+    "to": 170,
+    "type": 1,
+    "weight": 0.687301248207
+  }, {
+    "enabled": true,
+    "from": 93,
+    "historicalMarking": 17,
+    "lit": false,
+    "to": 173,
+    "type": 2,
+    "weight": 0.856859035005
+  }, {
+    "enabled": true,
+    "from": 176,
+    "historicalMarking": 75,
+    "lit": false,
+    "to": 172,
+    "type": 2,
+    "weight": 0.940730002747
+  }, {
+    "enabled": true,
+    "from": 152,
+    "historicalMarking": 197,
+    "lit": false,
+    "to": 175,
+    "type": 1,
+    "weight": 0.665059358501
+  }, {
+    "enabled": true,
+    "from": 97,
+    "historicalMarking": 198,
+    "lit": false,
+    "to": 174,
+    "type": 1,
+    "weight": 0.940153202918
+>>>>>>> c30f4faad97c88e1dcb75b168c388d6455fa702d
   } ]
 }
