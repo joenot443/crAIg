@@ -21,6 +21,7 @@ local JSON = require('json');
 --Game frame count
 local ticker = 0;
 firstRun = true;
+local aPressedTicker = 0;
 
 --Save and persist our initial state
 local originalState = savestate.create();
@@ -90,7 +91,12 @@ function runFrame(outputs, genome)
 
 	local realOut = {}
 	--Press joy buttons
-	if outputs.a then realOut.A = true else realOut.A = false end;
+	if outputs.a  and aPressedTicker < 10 then 
+		realOut.A = true
+		aPressedTicker = aPressedTicker + 1;
+	 else realOut.A = false 
+	 	aPressedTicker = 0;
+	 	end;
 	if outputs.b then realOut.B = true else realOut.B = false end;	
 	if outputs.left then realOut.left = true else realOut.left = false end;	
 	if outputs.right then realOut.right = true else realOut.right = false end;
