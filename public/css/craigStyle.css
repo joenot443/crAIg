@@ -34,10 +34,25 @@ h1 {
 }
 
 .active-link {
-    stroke: #ff0000;
     stroke-dasharray: 200;
     animation: dash 3s linear infinite;
     opacity: 0.4;
+}
+
+.type-goomba {
+    stroke: #aa7243;
+}
+
+.type-tile {
+    stroke: #00cc00;
+}
+
+.output-node {
+    stroke: #000000;
+}
+
+.hidden-node {
+    stroke: #000000;
 }
 
 .active-node {
