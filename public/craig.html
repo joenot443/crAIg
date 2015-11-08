@@ -5,130 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,300' rel='stylesheet' type='text/css'-->
+
+    <!-- CSS -->
     <link href="css/craigStyle.css" rel="stylesheet">
-    <script src="d3.v3.min.js" charset="utf-8"></script>
-        <script src="d3-grid.js"></script>
-    <script src="grid.js"></script>
-    <script src="network.js"></script>
-    <script src="socket.io.js"></script>
-    <script src="jquery-1.11.3.min.js"></script>
-    <style>
-        .node {
-            fill: #fff;
-        }
 
-        .input-node {
-            opacity:0;
-        }
+    <!-- Libraries -->
+    <script src="libs/d3.v3.min.js" charset="utf-8"></script>
+    <script src="libs/jquery-1.11.3.min.js"></script>
+    <script src="libs/socket.io.js"></script>
 
-        .input-node.active-node {
-            opacity:0.2;
-        }
-
-        .link {
-            stroke: #000;
-            stroke-width: 2px;
-            opacity: 0.2;
-        }
-
-        .node-label {
-            font-family: sans-serif;
-        }
-
-        .link-label {
-            font-family: sans-serif;
-        }
-
-        .active-link {
-            stroke: #ff0000;
-            stroke-dasharray: 200;
-            animation: dash 3s linear infinite;
-            opacity: 0.4;
-        }
-
-        .active-node {
-            stroke: #ff0000 !important;
-            fill: #ff0000 !important;
-            animation: pulse 1s ease infinite;
-            transform-origin:50%;
-        }
-
-        @keyframes dash {
-            to{
-                stroke-dashoffset: -1200;
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                stroke-width:1;
-                opacity:1;
-            }
-
-            50% {
-                opacity:1;
-            }
-
-            100% {
-                transform: scale(2.5);
-                stroke-width:0.25;
-                opacity:0;
-            }
-        }
-    </style>
-
+    <!-- Custom JS -->
+    <script src="js/grid.js"></script>
+    <script src="js/network.js"></script>
+    <script src="js/crAIg-display.js"></script>
 
     <title>crAIg</title>
     <h1>crAIg</h1>
     <body>
 
   </body>
-
-      <script>   
-        drawGrid();
-        // var socket = io.connect('http://localhost');
-        // socket.on('grid', function(data) {
-        //   updateGrid(data);
-        // });
-        // drawNetwork();
-        var networkJSON = {
-            synapses: [
-                {
-                    historicalMarking: 23,
-                    to: 170,
-                    from: 25,
-                    weight: 50
-                },
-                {
-                    historicalMarking: 30,
-                    to: 171,
-                    from: 120,
-                    weight: 10
-                },
-                {
-                    historicalMarking: 45,
-                    to: 180,
-                    from: 124,
-                    weight: 10
-                },
-                {
-                    historicalMarking: 46,
-                    to:172,
-                    from: 180,
-                    weight: 5
-                },
-                {
-                    historicalMarking: 50,
-                    to: 180,
-                    from: 55
-                }
-            ]
-        }
-
-        drawNetwork(networkJSON)
-
- </script>
  <br/>
  <input id="show-network" type="checkbox"/>Show Neural Network<br/>
  <input id="show-labels" type="checkbox"/>Show Synapse/Neuron IDs<br/>

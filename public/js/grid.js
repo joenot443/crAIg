@@ -1,14 +1,9 @@
 var pixels = [[]];
 var colours = {'0': 'gray', '-1': 'red', '2': 'green'};
 
-function drawGrid() {
+function drawMarioGrid() {
 
-	var chart = d3.select("body")
-				.append("svg")
-				.attr("width", 800)
-				.attr("height", 800);
-
-
+	var chart = d3.select("svg");
 	
 	for (var y = 0; y < 13; y++){
 		pixels.push([]);
