@@ -3,7 +3,7 @@ emu.speedmode("normal");
 
 --Constants
 local MARIOX_ADDR = 0x0086;
-local LOG_OUTPUT = false;
+local LOG_OUTPUT = true;
 
 --Joypad buttons
 
@@ -65,9 +65,12 @@ function runFrame(outputs)
 		io.output(file);
 		io.write(JSON:encode_pretty(data));
 		io.close();
+		local networkData = {};
+		networkData['nodes'] = nodes;
+		networkData['connections'] = connections;
 		local file = io.open('network.json', 'w+');
 		io.output(file);
-		io.write(JSON:encode_pretty(data));
+		io.write(JSON:encode_pretty(nodes));
 		io.close();
 		ticker = 0;
 	end

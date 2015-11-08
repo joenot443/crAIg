@@ -4,6 +4,7 @@ function deepFitnessCalculate(species)
 	print("Calculating fitness for ",#species.genomes," genomes")
 	for i=1,#species.genomes do
 		local genome = species.genomes[i]
+
 		print("\t\tStarting calculation for genome with",#genome.synapses," synapses")
 		print(pretty(genome.synapses))
 		genome.fitness = calculateFitness(genome)
@@ -14,6 +15,7 @@ function deepFitnessCalculate(species)
 	setCandidate(species)
 	return
 end
+
 
 function calculateFitness(genome)
 	local lastX;
@@ -27,8 +29,8 @@ function calculateFitness(genome)
 		
 		if currentPosition == lastX then
 			framesSinceProgress = framesSinceProgress + 1;
-		else 
-			framesSinceProgress = 0;
+		else
+ 			framesSinceProgress = 0;
 			lastX = currentPosition;
 		end
 
