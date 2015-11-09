@@ -1,7 +1,9 @@
+require("NEAT/config")
+
 --If allowInput, it can return an input neuron
 function getRandomNeuron(neurons, allowInput, previousLabel)
 	print("# neurons: ",#neurons)
-	local startValue = 50
+	local startValue = 1
 
 	if not allowInput then
 		startValue = 1 + INPUT_COUNT
@@ -15,18 +17,19 @@ function getRandomNeuron(neurons, allowInput, previousLabel)
 
 	local neuronNumber = math.random(startValue, neuronCount)
 
-	if neuronNumber < 169 then
-		local neuronYNumber = math.random(7, 10)
-		local neuronXNumber = math.random(5, 10)
+	if MODDED_ALGORITHM then
+		if neuronNumber < 169 then
+			local neuronYNumber = math.random(7, 10)
+			local neuronXNumber = math.random(5, 10)
 
-		neuronNumber = neuronYNumber * 13 + neuronXNumber;
-	end
+			neuronNumber = neuronYNumber * 13 + neuronXNumber;
+		end
 
-	if neuronNumber == 172 then
-		neuronNumber = 174
-	elseif neuronNumber == 173 then
-		print("setting to right")
-		neuronNumber = 171
+		if neuronNumber == 172 then
+			neuronNumber = 174
+		elseif neuronNumber == 173 then
+			neuronNumber = 171
+		end
 	end
 
 

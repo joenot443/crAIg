@@ -1,3 +1,6 @@
+--Enable this if you want to use the slightly modified algorithm that tends to learn to play mario slightly faster
+MODDED_ALGORITHM = true
+
 --Children per gen
 BABIES_PER_GENERATION = 20
 
