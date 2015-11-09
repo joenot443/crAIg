@@ -6,4 +6,17 @@ crAIg is a uses Neuroevolution to learn how to play Mario. Neuroevolution is the
 
 crAIg started out knowing nothing about Mario, or even what a game is. All crAIg starts with is a list of inputs and outputs, and he uses these to learn how to play Mario.
 
-# Explanation of
+# NEAT Algorithm
+The algorithm that crAIg uses to evolve is called "NEAT", based off of this paper published in the MIT Press Journals by Kenneth O. Stanely and Risto Miikkulainen: [Evolving Neural Networks through Augmented Topologies](http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf). A perspective on NEAT from a programmer's perspective will be in a blog post coming soon at [medium.com/@savas](https://medium.com/@savas).
+
+The code for the NEAT algorithm is all held within the NEAT folder. Check it out! To modify the way that crAIg breeds and selects, you can modify the NEAT/config.lua file.
+
+# How to run crAIg
+1. Clone this repo
+2. Download [FCEUX](www.fceux.com/web/download.html)
+3. Open FCEUX and click File -> Open ROM -> runtime/Super Mario Bros. (Japan, USA).nes
+4. Press enter to start the game (wait for mario to be standing on the ground)
+5. File -> Lua -> New Lua Script Window
+6. Browse... "crAIg.lua"
+7. Click "Run"
+8. Watch crAIg learn!

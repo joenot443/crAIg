@@ -63,13 +63,13 @@ function runFrame(outputs, genome)
 	data.tiles = tiles;
 	
 	if (ticker == 30) then
-		local file = io.open('graph.json', 'w+');
+		local file = io.open('runtime/live/graph.json', 'w+');
 		io.output(file);
 		io.write(JSON:encode_pretty(data));
 		io.close();
 		
 		if (firstRun) then 
-			local file = io.open('network.json', 'w+');
+			local file = io.open('runtime/live/network.json', 'w+');
 			io.output(file);
 			data =  {}
 			data['synapses'] = synapses;
@@ -78,7 +78,7 @@ function runFrame(outputs, genome)
 			io.close();
 			firstRun = false;
 		end
-		local file = io.open('litmap.json', 'w+');
+		local file = io.open('runtime/live/litmap.json', 'w+');
 		io.output(file);
 		local connectionsLitArr = {};
 		for k,v in pairs(connectionsLitMap) do
