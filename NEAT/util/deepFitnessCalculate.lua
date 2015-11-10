@@ -26,6 +26,7 @@ function calculateFitness(genome)
 	while (running) do
 		local outputs = chooseOutputs(genome.synapses, tiles)
 		local currentPosition = getMarioXPos();
+		time = getTime();
 
 		if currentPosition <= lastX then
 			framesSinceProgress = framesSinceProgress + 1;
@@ -34,7 +35,7 @@ function calculateFitness(genome)
 			lastX = currentPosition;
 		end
 
-		if framesSinceProgress > 50 then
+		if framesSinceProgress > 100 then
 			running = false;
 		end
 
@@ -42,15 +43,25 @@ function calculateFitness(genome)
 	end	
 
 
-	return fitness(getMarioXPos()) 
+	return fitness(getMarioXPos(), time) 
 end
 
-function fitness(xpos)
-	return xpos
+function fitness(xpos, time)
+	if xpos > 350 then
+		print("Time: "..time);
+
+		return xpos + 0.1*(400 - time);
+	else
+		return xpos
+	end
 end
 
 function getMarioXPos() 
 	return memory.readbyte(0x6D) * 0x100 + memory.readbyte(0x86);
+end
+
+function getTime()
+	return memory.readbyte(0x07F8)*100 + memory.readbyte(0x07F9) * 10 + memory.readbyte(0x07F9);
 end
 
 function setCandidate(species)
