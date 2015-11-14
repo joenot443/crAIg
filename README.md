@@ -7,7 +7,7 @@ crAIg is a uses Neuroevolution to learn how to play Mario. Neuroevolution is the
 crAIg started out knowing nothing about Mario, or even what a game is. All crAIg starts with is a list of inputs and outputs, and he uses these to learn how to play Mario.
 
 # NEAT Algorithm
-The algorithm that crAIg uses to evolve is called "NEAT", based off of this paper published in the MIT Press Journals by Kenneth O. Stanely and Risto Miikkulainen: [Evolving Neural Networks through Augmented Topologies](http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf). A perspective on NEAT from a programmer's perspective will be in a blog post coming soon at [medium.com/@savas](https://medium.com/@savas).
+The algorithm that crAIg uses to evolve is called "NEAT", based off of this paper published in the MIT Press Journals by Kenneth O. Stanely and Risto Miikkulainen: [Evolving Neural Networks through Augmented Topologies](http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf). An indepth explanation to the implementation of the NEAT algorithm from a programmers perpsective can be found [here](https://medium.com/@savas/craig-using-neural-networks-to-learn-mario-a76036b639ad).
 
 The code for the NEAT algorithm is all held within the NEAT folder. Check it out! To modify the way that crAIg breeds and selects, you can modify the NEAT/config.lua file.
 
