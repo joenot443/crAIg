@@ -1,0 +1,1 @@
+Files saved here are used by the node server to display crAIg's brain in real time. Please note that the server takes a little while to update, you might want to run FCEUX slowed down (10% or lower speed) to be able to understand what is being displayed.
