@@ -7,9 +7,6 @@ local AIR = 0
 local TILE = 1
 local GOOMBA = 2
 
-nodes = {};
-connections = {};
-
 connectionsLitMap = {};
 
 require('NEAT/util/generateNeurons')
@@ -40,7 +37,8 @@ end
 
 --Select which buttons to press based off the synapses
 function chooseOutputs(synapses, tiles)
-	
+	local nodes = {};
+	local connections = {};
 	local neurons = generateNeurons(synapses);
 
 	--Create a Node for every Neuron and add it to the nodes
