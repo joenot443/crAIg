@@ -11,7 +11,7 @@ The algorithm that crAIg uses to evolve is called "NEAT", based off of this pape
 
 The code for the NEAT algorithm is all held within the NEAT folder. Check it out! To modify the way that crAIg breeds and selects, you can modify the NEAT/config.lua file.
 
-#Inspiration
+# Inspiration
 The idea for crAIg was based on [MarIO](https://www.youtube.com/watch?v=qv6UVOQ0F44), built by [SethBling](www.twitch.tv/sethbling). While crAIg attempts to learn about the same game as MarIO, the algorithms present in crAIg differ in some important ways.
 
 1. **Respeciation**: crAIg properly implements the respeciation algorithm described by the NEAT method, whereas MarIO skips over this important part of the implementation. Because of this, as crAIg grows more complex, it is unlikely that one species becomes dominant (for a more detailed explanation see point 6 of [my blog post](https://medium.com/@savas/craig-using-neural-networks-to-learn-mario-a76036b639ad)).
@@ -26,7 +26,7 @@ These changes allow for a more robust neural network as it continues to grow, wi
 
 # How to run crAIg
 1. Clone this repo
-2. Download [FCEUX](www.fceux.com/web/download.html)
+2. Download [FCEUX](http://www.fceux.com/web/download.html)
 3. Open FCEUX and click File -> Open ROM -> runtime/Super Mario Bros. (Japan, USA).nes
 4. Press enter to start the game (wait for mario to be standing on the ground)
 5. File -> Lua -> New Lua Script Window
