@@ -40,7 +40,8 @@ function prepareSockets() {
 
     socket.on('synapses', function(data) {
         console.log(data);
-
+        $('svg').empty();
+        
         drawNetwork(data.synapses, function(){
             console.log("Drew Network");
 

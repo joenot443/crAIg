@@ -38,6 +38,16 @@ text {
     display: inline-block;
     float: right;
     margin-right: 4em;
+    display: none;
+}
+
+#title-image{
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-top: 3em;
+    padding-bottom: 1em;
+    width: 400px;
+    height: auto;
 }
 
 .node {
