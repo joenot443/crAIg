@@ -1,7 +1,11 @@
 var pixels = [[]];
 var colours = {'0': 'gray', '3': 'red', '2': 'green'};
-
+var gridData = {}
 function drawMarioGrid() {
+
+
+	d3.select("#graph").attr("width", graphWidth + 40).attr("height", graphHeight + 40);
+
 	pixels = [[]];
 	var chart = d3.select("svg");
 	
@@ -21,9 +25,17 @@ function drawMarioGrid() {
 
 function updateGrid(data){
 
+	if (data == gridData) {
+		console.log("No change in grid");
+		return;
+	} else {
+		gridData = data;
+		console.log("Updating grid");
+		console.log(data);
+	}
 	for (var y = 0; y < 12; y++) {
 		indexY = y - 6;
-		var rowData = data['tiles'][indexY];
+		var rowData = gridData['tiles'][indexY];
 		for (var x = 0; x < 12; x++) {
 			var rect = pixels[y][x];
 			rect.attr('fill', colours[String(rowData[x])])

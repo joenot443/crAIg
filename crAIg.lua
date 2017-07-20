@@ -1,4 +1,4 @@
-package.path = package.path .. ";./?.lua"
+package.path = package.path .. ";/Users/joecrozier/Development/crAIg/?.lua;/Users/joecrozier/Development/crAIg/runtime/;"
 -- pretty = require "pl.pretty".dump
 function pretty(str)
 	return str
@@ -36,13 +36,16 @@ table.insert(seedSpecies.genomes,randomGenome)
 table.insert(crAIg.species,seedSpecies)
 
 --Uncomment to load a previous iteration of crAIg
---crAIg = persistence.load("crAIgs/crAIg-saved-13.lua")
+-- crAIg, e = persistence.load("/Users/joecrozier/Development/crAIg/runtime/crAIgs/crAIg-saved-20.lua")
+
+print(crAIg.generation)
+print(e)
 
 local numGenerations = 50
 for i=1,numGenerations do
 	newGeneration(crAIg)
 
 	--Save crAIg
-	local crAIgName = "runtime/crAIgs/crAIg-saved-"..crAIg.generation..".lua";
-	persistence.store(crAIgName, crAIg);
+	-- local crAIgName = "runtime/crAIgs/crAIg-saved-"..crAIg.generation..".lua";
+	-- persistence.store(crAIgName, crAIg);
 end

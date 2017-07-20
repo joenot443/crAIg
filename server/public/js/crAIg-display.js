@@ -1,49 +1,65 @@
 //Global config
-var graphWidth = 750;
-var graphHeight = 750;
+var graphWidth = 1000;
+var graphHeight = 500;
 
-var watchingSocket = false;
+var leftYPos = 50;
+var rightYPos = 150;
+var aYPos = 250;
+var bYPos = 350;
+
+var synapsesDrawn = false;
+var gridDrawn = false;
+var socket;
+
 
 $(document).ready(function(){
-    //Add SVG to stage
-
+    console.log("Connecting");
+    socket = io.connect('http://localhost:3000');
+    prepareSockets();
+    //Draw the mario grid
+    drawMarioGrid();
     //Draw network
     //Called once on init
-    var socket = io.connect('http://localhost');
+});
+
+function prepareSockets() {
+    socket.on('test', function(data) {
+        console.log(data);
+    });
+
+    socket.on('grid', function(data) {
+        updateGrid(data);
+        gridDrawn = true;
+    });
+
+    socket.on('synapses_update',function(data){
+        if (synapsesDrawn && gridDrawn) {
+            updateNetworkStates(data);
+        }
+    });
+
     socket.on('synapses', function(data) {
         console.log(data);
-
-        $("svg").remove();
-
-        d3.select("body")
-        .append("svg")
-            .attr("width", graphWidth+20)
-            .attr("height", graphHeight+20);
-
-            
-        //Draw the mario grid
-        drawMarioGrid();
-
 
         drawNetwork(data.synapses, function(){
             console.log("Drew Network");
 
             d3.select("svg").append("text")
-                .attr("x",760)
-                .attr("y",105)
+                .attr("x",graphWidth - 25)
+                .attr("y",leftYPos)
                 .text("Left");
             d3.select("svg").append("text")
-                .attr("x",760)
-                .attr("y",155)
+                .attr("x",graphWidth - 25)
+                .attr("y",rightYPos)
                 .text("Right");
             d3.select("svg").append("text")
-                .attr("x",760)
-                .attr("y",205)
-                .text("A");
+                .attr("x",graphWidth - 25)
+                .attr("y",aYPos)
+                .text(" A");
             d3.select("svg").append("text")
-                .attr("x",760)
-                .attr("y",255)
-                .text("B");
+                .attr("x",graphWidth - 25)
+                .attr("y",bYPos)
+                .text(" B");
 
             //Add text to nodes that aren't input/output
             $(".node").each(function(i, el){
@@ -74,21 +90,7 @@ $(document).ready(function(){
                         .text(historicalMarking)
                 }
             });
-
-            $("#watch-socket").click(function(){
-                //Start watching socket
-                if(!watchingSocket){
-                    socket.on('grid', function(data) {
-                      updateGrid(data);
-                    });
-
-                    socket.on('synapses_update',function(data){
-                        updateNetworkStates(data);
-                    });
-                    
-                    watchingSocket = true;
-                }
-            });
+            synapsesDrawn = true;
         });
     });
-});
+}

@@ -77,6 +77,7 @@ persistence =
 	end;
 
 	load = function (path)
+		print(package.path);
 		local f, e = loadfile(path);
 		if f then
 			return f();

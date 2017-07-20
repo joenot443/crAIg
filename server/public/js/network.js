@@ -12,7 +12,7 @@ function drawNetwork(synapses,callback) {
     var color = d3.scale.category20();
 
     var force = d3.layout.force()
-        .charge(-120)
+        .charge(-60)
         .linkDistance(30)
         .size([width, height]);
 
@@ -38,8 +38,8 @@ function drawNetwork(synapses,callback) {
     //Add output nodes
     //170
     nodes.push({
-        x: 750,
-        y: 100,
+        x: graphWidth - 30,
+        y: leftYPos,
         fixed: true,
         type: 2
     });
@@ -47,8 +47,8 @@ function drawNetwork(synapses,callback) {
 
     //171
     nodes.push({
-        x: 750,
-        y: 150,
+        x: graphWidth - 30,
+        y: rightYPos,
         fixed: true,
         type: 2
     });
@@ -56,8 +56,8 @@ function drawNetwork(synapses,callback) {
 
     //172
     nodes.push({
-        x: 750,
-        y: 200,
+        x: graphWidth - 30,
+        y: aYPos,
         fixed: true,
         type: 2
     });
@@ -65,8 +65,8 @@ function drawNetwork(synapses,callback) {
 
     //173
     nodes.push({
-        x: 750,
-        y: 250,
+        x: graphWidth - 30,
+        y: bYPos,
         fixed: true,
         type: 2
     });
@@ -117,7 +117,7 @@ function drawNetwork(synapses,callback) {
         .nodes(nodes)
         .links(links);
 
-    force.linkDistance(width/2);
+    force.linkDistance(width/4);
 
     var link = svg.selectAll('.link')
         .data(links)
@@ -176,7 +176,7 @@ function drawNetwork(synapses,callback) {
     force.on('end',function(){
         node.attr('r', 3)
         .attr('cx', function(d) { return d.x; })
-        .attr('cy', function(d) { return d.y; });
+        .attr('cy', function(d) { return d.y > 0 ? d.y : 10; });
 
         link.attr('x1', function(d) { return d.source.x; })
         .attr('y1', function(d) { return d.source.y; })
@@ -201,16 +201,21 @@ function updateNetworkStates(synapses){
         //     neuronMap[links[linkMappings[synapses[i].historicalMarking]].target.label] = true;
         // }
     }
-
-    $(".link").each(function(index,el){
-        var marking = el.getAttribute("marking");
+    console.log("Updating network states");
+    $(".link").each(function(){
+        var marking = this.getAttribute("marking");
         if(synapseMap[marking]){
-            var oldClasses = $(el).attr("class");
-            $(el).attr("class",oldClasses + " active-link");
+            var oldClasses = $(this).attr("class");
+            if (oldClasses.indexOf(" active-link") == -1) {
+                oldClasses = oldClasses.replace(" inactive-link", "");
+                $(this).attr("class",oldClasses + " active-link");
+            }
         } else {
-            var oldClasses = $(el).attr("class");
-            oldClasses.replace(" active-link","");
-            $(el).attr("class",oldClasses);
+            var oldClasses = $(this).attr("class");
+            if (oldClasses.indexOf(" inactive-link") == -1) {
+                oldClasses = oldClasses.replace(" active-link", "");
+                $(this).attr("class", oldClasses + " inactive-link");
+            }
         }
     })
 

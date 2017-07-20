@@ -18,13 +18,18 @@
     <script src="js/grid.js"></script>
     <script src="js/network.js"></script>
     <script src="js/crAIg-display.js"></script>
+    <script src="js/crAIg-control.js"></script>
 
     <title>crAIg</title>
     <h1>crAIg</h1>
     <body>
-
+    <svg id="graph"></svg>
+    <div id="controls">
+      <h3>crAIg Controls</h3>
+      <h4><input type="checkbox" id="hideSynapse"> Hide Inactive Synapses</h4>
+      <h4><input type="checkbox" id="hideSynapseLabel"> Hide Synapse Labels</h4>
+      <h4><input type="checkbox" id="hideNodeLabel"> Hide Intermediary Note Labels</h4>
   </body>
  <br/>
- <input id="watch-socket" type='button' value="Watch Socket"/><br/>
 
 </html>

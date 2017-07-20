@@ -3,8 +3,9 @@ var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var fs = require('fs');
+var _ = require('underscore');
 
-server.listen(80);
+server.listen(3000);
 
 //Serve static files
 app.use(express.static('public'));
@@ -21,16 +22,26 @@ io.on('connection', function (socket) {
 	//Set up a timer to send the JSON file
 	setInterval(sendGrid, 500);
 	setInterval(sendSynapsesUpdate, 500);
-	setInterval(checkSendSynapses, 500);
+	setInterval(checkSendSynapses, 100);
+
+	socket.emit("test", {hello: "world"});
 
 	var lastGenome = 0;
+	var currentGrid = {};
+	var currentSynapseUpdate = {};
+
 	function sendGrid() {
-		console.log("Sending grid");
 		var graph = fs.readFileSync("../runtime/live/graph.json");
+
 		try {
 			var grid = JSON.parse(graph);
-			socket.emit('grid', grid);
+			if (!_.isEqual(grid, currentGrid)) {
+				currentGrid = grid;
+				console.log("Sending grid");
+				socket.emit('grid', grid);
+			}
 		} catch(e){
+			console.log(e);
 			console.log("Skipping send because file un-parseable");
 		}
 	}
@@ -47,15 +58,17 @@ io.on('connection', function (socket) {
 		};
 	}	catch(e){
 
-	}
-
+		}
 	}
 
 	function sendSynapsesUpdate(){
-		console.log("Sending synapses update");
 		try {
 			var synapses = JSON.parse(fs.readFileSync('../runtime/live/litmap.json', 'utf8'));
-			socket.emit('synapses_update', synapses);
+			if (!_.isEqual(synapses, currentSynapseUpdate)) {
+				console.log("Sending synapses update");
+				currentSynapseUpdate = synapses;
+				socket.emit('synapses_update', currentSynapseUpdate);
+			}
 		} catch(e){
 			console.log("Skipping send because file un-parseable 3");
 		}
