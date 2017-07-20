@@ -36,16 +36,16 @@ table.insert(seedSpecies.genomes,randomGenome)
 table.insert(crAIg.species,seedSpecies)
 
 --Uncomment to load a previous iteration of crAIg
---crAIg = persistence.load("runtime/crAIgs/crAIg-saved-20.lua")
+--crAIg = persistence.load("runtime/crAIgs/crAIg-saved-50.lua")
 
 print(crAIg.generation)
 print(e)
 
-local numGenerations = 50
+local numGenerations = 1000
 for i=1,numGenerations do
 	newGeneration(crAIg)
 
 	--Save crAIg
-	-- local crAIgName = "runtime/crAIgs/crAIg-saved-"..crAIg.generation..".lua";
-	-- persistence.store(crAIgName, crAIg);
+	local crAIgName = "runtime/crAIgs/crAIg-saved-"..crAIg.generation..".lua";
+	persistence.store(crAIgName, crAIg);
 end

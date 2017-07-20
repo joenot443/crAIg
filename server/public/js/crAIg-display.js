@@ -40,7 +40,9 @@ function prepareSockets() {
 
     socket.on('synapses', function(data) {
         console.log(data);
-
+        $('line').remove();
+        $('circle').remove();
+        $('text').remove();
         drawNetwork(data.synapses, function(){
             console.log("Drew Network");
 
