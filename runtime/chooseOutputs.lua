@@ -17,10 +17,11 @@ require('NEAT/config')
 
 --Solve the node recursively
 function solveNode(node)
+	if (node.litTile == false and node.litGoomba == false) then return end;
 	for k, conn in pairs(node.connections) do
 		--Recursively solve the node
-		if (conn.to.litTile and conn.litTile) then return end;
-		if (conn.to.litGoomba and conn.litGoomba) then return end;
+		if (conn.to.litTile and node.litTile) then return end;
+		if (conn.to.litGoomba and node.litGoomba) then return end;
 		--Only try to light the node if it's not lit already
 		if (conn.type == 1 and node.litTile) then 
 			conn.to.litTile = true;
