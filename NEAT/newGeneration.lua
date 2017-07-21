@@ -7,8 +7,6 @@ require("NEAT/util/calculateAdjustedFitnesses")
 
 --Evolve crAIg into the next generation
 function newGeneration(crAIg)
-	print("crAIg:")
-	print(crAIg)
 	crAIg.generation = crAIg.generation + 1
 	print("-------------GENERATION----------------")
 	print("Starting gen ",crAIg.generation)

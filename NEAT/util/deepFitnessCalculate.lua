@@ -19,6 +19,7 @@ end
 
 function calculateFitness(genome)
 	local lastX = 0;
+	local bestX = 0;
 	local running = true;
 	local framesSinceProgress = 0;
 	local tiles = initialState();
@@ -35,6 +36,10 @@ function calculateFitness(genome)
 			lastX = currentPosition;
 		end
 
+		if currentPosition > bestX then
+			bestX = currentPosition
+		end
+
 		if framesSinceProgress > 100 then
 			running = false;
 		end
@@ -43,13 +48,11 @@ function calculateFitness(genome)
 	end	
 
 
-	return fitness(getMarioXPos(), time) 
+	return fitness(bestX, time) 
 end
 
 function fitness(xpos, time)
 	if xpos > 350 then
-		print("Time: "..time);
-
 		return xpos + 0.1*(400 - time);
 	else
 		return xpos

@@ -1,8 +1,11 @@
 --Enable this if you want to use the slightly modified algorithm that tends to learn to play mario slightly faster
-MODDED_ALGORITHM = true
+MODDED_ALGORITHM = false
 
 --Children per gen
 BABIES_PER_GENERATION = 20
+
+--Don't kill off this percentage of a species
+FITTEST_PERCENTAGE = 0.7
 
 --Probabilities of different mutations occuring
 SYNAPSE_WEIGHT_MUTATION_CHANCE = 0.8
@@ -33,7 +36,7 @@ COMPATIBILITY_C3 = 0.4
 SMALL_GENOME_THRESHOLD = 20
 
 --Used to decide if species should be in the same or different species
-COMPATIBILITY_THRESHOLD = 5.0
+COMPATIBILITY_THRESHOLD = 2.5
 
 --
 FITNESS_WEIGHT = 3

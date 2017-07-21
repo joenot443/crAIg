@@ -6,7 +6,13 @@ function survivalOfTheFittest(species, totalAdjustedFitness)
 	table.sort(species.genomes, function(a,b)
 		return (a.fitness > b.fitness)
 	end)
-	local theWeakCount = math.floor(species.sumAdjustedFitness / totalAdjustedFitness) - 1
+
+	--Don't worry about killing off species members if the species is 2 or less, they will be taken care of due to extinction
+	local theWeakCount = 0
+	if #species.genomes > 2 then
+		theWeakCount = #species.genomes - (FITTEST_PERCENTAGE*#species.genomes)
+	end
+
 	print("\tSpecies ",species.id," generates ",species.sumAdjustedFitness,"/",totalAdjustedFitness, " fitness with ",#species.genomes," genomes")
 
 	local thoseWhoSurvived = #species.genomes - theWeakCount
